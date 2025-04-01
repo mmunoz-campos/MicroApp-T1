@@ -1,0 +1,302 @@
+{\rtf1\ansi\deff0 {\fonttbl{\f0\fnil Garamond;}}
+{\info {\author .}{\company .}{\title .}}
+\deflang1033\plain\fs20
+{\footer\pard\qc\plain\f0\fs20\chpgn\par}
+{
+{\b\qc\line Total de desocupados (ajustado por valor de expansión }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs \cellx850
+\fs20 \pard\intbl \qr {\b Tipo de estrato}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs \cellx1700
+\fs20 \pard\intbl \qr {\b Sexo}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs \cellx4700
+\fs20 \pard\intbl \qr {\b Estado civil o conyugal}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs \cellx5900
+\fs20 \pard\intbl \qr {\b Total de Desocupados}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Casado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {78671}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Conviviente}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {72922}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Soltero/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {249839}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Viudo/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {2358}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Separado/a de hecho o anulado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {17261}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Divorciado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {8724}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {No responde}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {0}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Casado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {9259}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Conviviente}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {7766}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Soltero/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {21012}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Viudo/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {264}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Separado/a de hecho o anulado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {1496}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Hombre}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Divorciado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {578}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Casado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {58934}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Conviviente}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {67275}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Soltero/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {181568}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Viudo/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {5351}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Separado/a de hecho o anulado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {27922}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Divorciado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {12498}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {No sabe}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {0}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Ciudad}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {No responde}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {0}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Casado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {7558}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Conviviente}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {5438}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Soltero/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {13845}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Viudo/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {1149}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Separado/a de hecho o anulado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {1683}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {Divorciado/a}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {771}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx850
+\fs20 \pard\intbl \ql { Rural}\cell
+\cellx1700
+\fs20 \pard\intbl \ql {Mujer}\cell
+\cellx4700
+\fs20 \pard\intbl \ql {No responde}\cell
+\cellx5900
+\fs20 \pard\intbl \qr {0}\cell
+\row}
+
+
+\writepositionforappend
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw15\brdrs\cellx5900 \cell
+\row}}}
