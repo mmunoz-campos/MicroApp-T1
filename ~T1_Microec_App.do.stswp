@@ -88,7 +88,7 @@ label variable desocupados_escalado "Total de Desocupados"
 preserve
 
 drop if est_conyugal == 0 
-collapse (sum) desocupados_escalado, by(sexo tipo est_conyugal)
+collapse (sum) desocupados_escalado, by($clas )
 
 quietly ds
 local totvars `r(varlist)'
@@ -125,7 +125,7 @@ gen fuerza_trabajo = ocupados_escalado + desocupados_escalado
 
 preserve
 
-collapse (sum) desocupados_escalado ocupados_escalado, by()
+collapse (sum) desocupados_escalado ocupados_escalado, by($clas )
 ** tengo pensado usar la base colapsada como base de ahora en más, ya que piden
 ** totales.
 ** Puedo después colapsarla más para mostrar solo las variables que me piden.
