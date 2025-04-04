@@ -31,112 +31,119 @@ save "ene-2023-ond_delim.dta", replace
 gen ponderador = round(fact_cal)
 **  -----------------------
 
+
 **  ---- Pregunta 1.6 -----
 gen ocupados = (activ == 1)
 gen ocupados_escalado = ocupados * ponderador
-* Agregamos un label a la variable creada
-label variable ocupados_escalado "Total de Ocupados"
 
-global clas sexo tipo est_conyugal
+global ste sexo tipo est_conyugal
 
-preserve
-
-drop if est_conyugal == 0 
-collapse (sum) ocupados_escalado, by($clas )
-
-* Buscamos generar una lista con todas las variables (para automatizar a futuro)
-quietly ds
-local totvars `r(varlist)'
-** Todo este loop es solamente para interambiar valores por labels:
-foreach x in `totvars' { 
-	* Imponemos la condición de decodificar solamente si
-	* existe un label para los valores.
-    if "`: value label `x''" != "" { 
-        decode `x', gen(temp_var)  
-        drop `x'                   
-        rename temp_var `x'     
-    } 
-	* Para mantener la variable "Total de ocupados" a la derecha, repetimos
-	* este proceso de agregar y eliminar, pero sin decodificar.
-    else { 
-        gen temp_var = `x'
-        drop `x'                   
-        rename temp_var `x'
-    }
+foreach x in $ste {
+	preserve
+	collapse (sum) ocupados_escalado, by(`x')
+	* rescatamos el label para el nombre
+	local lbl: variable label `x'
+	local lbl_lower = strlower("`lbl'")
+	label variable ocupados_escalado "Total de desocupados por `lbl_lower'"
+	* guardamos el dataset
+	save ocp_by_`x'.dta, replace
+	restore
 }
-
-* El label se elminó en el paso anterior
-label variable ocupados_escalado "Total de Desocupados"
-
-* Generamos el documento con la tabla
-quietly ds
-local totvars `r(varlist)'
-quietly asdoc list `totvars', label ///
-	title(Total de ocupados - ajustado por valor de expansion) ///
-	fhc(\b) save(tabla16.doc) replace
-
-restore
-
 **  -----------------------
+
+
 
 **  ---- Pregunta 1.7 -----
 gen desocupados = (activ == 2)
-
 gen desocupados_escalado = desocupados * ponderador
-label variable desocupados_escalado "Total de Desocupados"
 
-preserve
-
-drop if est_conyugal == 0 
-collapse (sum) desocupados_escalado, by(sexo tipo est_conyugal)
-
-quietly ds
-local totvars `r(varlist)'
-foreach x in `totvars' { 
-    if "`: value label `x''" != "" { 
-        decode `x', gen(temp_var)  
-        drop `x'                   
-        rename temp_var `x'     
-    } 
-    else { 
-        gen temp_var = `x'
-        drop `x'                   
-        rename temp_var `x'
-    }
+foreach x in $ste {
+	preserve
+	collapse (sum) desocupados_escalado, by(`x')
+	local lbl: variable label `x'
+	local lbl_lower = strlower("`lbl'")
+	label variable desocupados_escalado "Total de desocupados por `lbl_lower'"
+	merge 1:1 `x' using ocp_by_`x'.dta
+	drop _merge
+	save ocp_by_`x'.dta, replace
+	restore
 }
-
-label variable desocupados_escalado "Total de Desocupados"
-
-quietly ds
-local totvars `r(varlist)'
-quietly asdoc list `totvars', label ///
-	title(Total de desocupados - ajustado por valor de expansion) ///
-	fhc(\b) save(tabla17.doc) replace
-
-restore
-
 **  -----------------------
 
 
 
-**  ---- Pregunta 1.7 -----
+**  ---- Pregunta 1.8 -----
 
 gen fuerza_trabajo = ocupados_escalado + desocupados_escalado
 
-preserve
-
-collapse (sum) desocupados_escalado ocupados_escalado, by()
-** tengo pensado usar la base colapsada como base de ahora en más, ya que piden
-** totales.
-** Puedo después colapsarla más para mostrar solo las variables que me piden.
-
-** Can we work with multiple dfs in stata?
-
+foreach x in $ste {
+	preserve
+	collapse (sum) fuerza_trabajo, by(`x')
+	local lbl: variable label `x'
+	local lbl_lower = strlower("`lbl'")
+	label variable fuerza_trabajo "Fuerza de trabajo por `lbl_lower'"
+	merge 1:1 `x' using ocp_by_`x'.dta
+	drop _merge
+	save ocp_by_`x'.dta, replace
+	restore
+}
 **  -----------------------
 
+**  ---- Pregunta 1.9 -----
+
+gen mayoresde15 = 1 if edad >= 15
+replace mayoresde15 = 0 if edad < 15
+
+foreach x in $ste {
+	preserve
+	replace mayoresde15 = mayoresde15 * ponderador
+	collapse (sum) mayoresde15, by(`x')
+	local lbl: variable label `x'
+	local lbl_lower = strlower("`lbl'")
+	label variable mayoresde15 "Pob. en edad de trabajar por `lbl_lower'"
+	merge 1:1 `x' using ocp_by_`x'.dta
+	drop _merge
+	save ocp_by_`x'.dta, replace
+	restore
+}
+**  -----------------------
+
+**  ---- Pregunta 1.10 -----
+
+foreach x in $ste {
+	preserve
+	use ocp_by_`x'.dta, clear
+	gen tasa_de_particip = round(100*(fuerza_trabajo/mayoresde15),0.01)
+	local lbl: variable label `x'
+	local lbl_lower = strlower("`lbl'")
+	label variable tasa_de_particip "Tasa de participación por `lbl_lower'"
+	save ocp_by_`x'.dta, replace
+	restore
+}
+**  -----------------------
+
+**  ---- Pregunta 1.11 -----
+gen tasa_de_particip = round(100*(fuerza_trabajo/(mayoresde15*ponderador)),0.01) ///
+	if edad >= 15
+	
+sum tasa_de_particip
+*asdoc
+
+foreach x in $ste {
+	preserve
+	use ocp_by_`x'.dta, clear
+	drop if `x' == 88 | `x' == 0 | `x' == 99
+	quietly graph bar (sum) tasa_de_particip, over(`x')
+	quietly graph export `x'_tasa_de_particip.png, replace
+	restore
+}
 
 
-restore
+use ocp_by_est_conyugal.dta, clear
+*describe est_conyugal
+browse
+
+**  -----------------------
 
 log close
 
