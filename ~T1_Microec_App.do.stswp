@@ -43,7 +43,7 @@ foreach x in $ste {
 	collapse (sum) ocupados_escalado, by(`x')
 	* rescatamos el label para el nombre
 	local lbl: variable label `x'
-	local lbl_lower = strlower("`lbl'")
+	local lbl_lower = substr(strlower("`lbl'"), 1, 14)
 	label variable ocupados_escalado "Total de desocupados por `lbl_lower'"
 	* guardamos el dataset
 	save ocp_by_`x'.dta, replace
@@ -61,7 +61,7 @@ foreach x in $ste {
 	preserve
 	collapse (sum) desocupados_escalado, by(`x')
 	local lbl: variable label `x'
-	local lbl_lower = strlower("`lbl'")
+	local lbl_lower = substr(strlower("`lbl'"), 1, 14)
 	label variable desocupados_escalado "Total de desocupados por `lbl_lower'"
 	merge 1:1 `x' using ocp_by_`x'.dta
 	drop _merge
@@ -80,7 +80,7 @@ foreach x in $ste {
 	preserve
 	collapse (sum) fuerza_trabajo, by(`x')
 	local lbl: variable label `x'
-	local lbl_lower = strlower("`lbl'")
+	local lbl_lower = substr(strlower("`lbl'"), 1, 14)
 	label variable fuerza_trabajo "Fuerza de trabajo por `lbl_lower'"
 	merge 1:1 `x' using ocp_by_`x'.dta
 	drop _merge
@@ -99,7 +99,7 @@ foreach x in $ste {
 	replace mayoresde15 = mayoresde15 * ponderador
 	collapse (sum) mayoresde15, by(`x')
 	local lbl: variable label `x'
-	local lbl_lower = strlower("`lbl'")
+	local lbl_lower = substr(strlower("`lbl'"), 1, 14)
 	label variable mayoresde15 "Pob. en edad de trabajar por `lbl_lower'"
 	merge 1:1 `x' using ocp_by_`x'.dta
 	drop _merge
@@ -114,9 +114,7 @@ foreach x in $ste {
 	preserve
 	use ocp_by_`x'.dta, clear
 	gen tasa_de_particip = round(100*(fuerza_trabajo/mayoresde15),0.01)
-	local lbl: variable label `x'
-	local lbl_lower = strlower("`lbl'")
-	label variable tasa_de_particip "Tasa de participación por `lbl_lower'"
+	label variable tasa_de_particip "Tasa de participación"
 	save ocp_by_`x'.dta, replace
 	restore
 }
@@ -132,16 +130,32 @@ sum tasa_de_particip
 foreach x in $ste {
 	preserve
 	use ocp_by_`x'.dta, clear
+	
+	*eliminamos "no sabe", "no aplica", "no responde"
 	drop if `x' == 88 | `x' == 0 | `x' == 99
-	quietly graph bar (sum) tasa_de_particip, over(`x')
+	
+	* Acortamos los labels de la var. categórica
+	decode `x', generate(new_var)
+	drop `x'
+	rename new_var `x'
+	replace `x' = substr(`x', 1, 11)
+
+	*Graficamos
+	local y_label : variable label tasa_de_particip
+	local lbl: variable label `x'
+	local lbl_lower = strlower("`lbl'")
+	quietly graph bar tasa_de_particip, over(`x', label(angle(45))) ///
+		ytitle("`y_label'") title("Tasa de participación") ///
+		subtitle("Por `lbl_lower'") xsize(2) ysize(2) ///
+		graphregion(margin(large)) scheme(stcolor) style(verdana)
+	*Exportamos e
 	quietly graph export `x'_tasa_de_particip.png, replace
+	
 	restore
 }
 
-
-use ocp_by_est_conyugal.dta, clear
-*describe est_conyugal
-browse
+*use ocp_by_est_conyugal.dta, clear
+*browse
 
 **  -----------------------
 
