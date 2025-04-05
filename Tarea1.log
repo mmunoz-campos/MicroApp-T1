@@ -1,0 +1,37 @@
+---------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP/Tarea
+> 1.log
+  log type:  text
+ opened on:   5 Apr 2025, 09:57:08
+
+. 
+. ************************************
+. ************************************
+. ***                                                              ***
+. *** ----    PREGUNTA 2.     ---- ***
+. ***                                                              ***
+. ************************************
+. ************************************
+. 
+. *clear all
+. *macro drop _all
+. 
+. **  ---- Pregunta 2.2 -----
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
+
+. import delimited "A_INSCRITOS_PUNTAJES_PDT_2022_PUB_MRUN.csv"
+(encoding automatically selected: UTF-8)
+(71 vars, 285,513 obs)
+
+. **  -----------------------
+. 
+. 
+. log close
+      name:  <unnamed>
+       log:  /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP/Tarea
+> 1.log
+  log type:  text
+ closed on:   5 Apr 2025, 09:57:13
+---------------------------------------------------------------------------------------
