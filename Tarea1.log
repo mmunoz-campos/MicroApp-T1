@@ -1,9 +1,8 @@
----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP/Tarea
-> 1.log
+       log:  /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP/Tarea1.log
   log type:  text
- opened on:   5 Apr 2025, 09:57:08
+ opened on:   5 Apr 2025, 15:56:28
 
 . 
 . ************************************
@@ -14,6 +13,8 @@
 . ************************************
 . ************************************
 . 
+. *ssc install binscatter
+. 
 . *clear all
 . *macro drop _all
 . 
@@ -21,17 +22,539 @@
 . cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
 /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
 
-. import delimited "A_INSCRITOS_PUNTAJES_PDT_2022_PUB_MRUN.csv"
+. import delimited "A_INSCRITOS_PUNTAJES_PDT_2022_PUB_MRUN.csv", clear
 (encoding automatically selected: UTF-8)
 (71 vars, 285,513 obs)
+
+. save "inscritos-puntajes.dta", replace
+file inscritos-puntajes.dta saved
+
+. import delimited "B_SOCIOECONOMICO_DOMICILIO_PDT_2022_PUB_MRUN.csv", clear
+(encoding automatically selected: UTF-8)
+(51 vars, 285,513 obs)
+
+. merge 1:1 _n using "inscritos-puntajes.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           285,513  (_merge==3)
+    -----------------------------------------
+
+. 
+. 
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP
+
+. asdoc sum _merge, save(mergep22.doc) fhc(\i) replace
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      _merge |    285,513           3           0          3          3
+Click to Open File:  mergep22.doc
+
+. 
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
+
+. drop _merge
+
+. save "puntaje_economico.dta", replace
+file puntaje_economico.dta saved
+
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 2.3 -----
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
+
+. use "puntaje_economico.dta", clear
+
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP
+
+. 
+. sum
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+        mrun |    285,513    1.28e+07     7393475         26   2.65e+07
+anyo_proceso |    285,513        2022           0       2022       2022
+codigo_re~io |    285,513    9.561389    3.943751          1         16
+codigo_pr~io |    285,513    97.49909    39.21828         11        163
+codigo_co~io |    285,513    9756.894      3924.7       1101      16305
+-------------+---------------------------------------------------------
+nombre_pr~io |          0
+nombre_co~io |          0
+ciudad_dom~o |          0
+        sexo |    285,513    1.547852    .4977057          1          2
+fecha_naci~o |    285,513    200167.2    419.2407     194612     201701
+-------------+---------------------------------------------------------
+economicam~e |    285,513    1.432436    1.692129          1          9
+ ocupacion_1 |          0
+ ocupacion_2 |          0
+ ocupacion_3 |          0
+ ocupacion_4 |          0
+-------------+---------------------------------------------------------
+ ocupacion_5 |          0
+ ocupacion_6 |          0
+ ocupacion_7 |          0
+ ocupacion_8 |          0
+tiene_trab~m |    285,513    .5576278    1.871138          0          9
+-------------+---------------------------------------------------------
+horario_tr~o |    285,513    8.290526    2.153985          1          9
+con_quien_~1 |          0
+con_quien_~2 |          0
+con_quien_~3 |          0
+con_quien_~4 |          0
+-------------+---------------------------------------------------------
+con_quien_~5 |          0
+con_quien_~6 |          0
+con_quien_~7 |          0
+con_quien_~8 |          0
+con_quien_~9 |          0
+-------------+---------------------------------------------------------
+con_quien~10 |          0
+cuantos_tr~m |    285,513    8.692655    21.53071          1         99
+personas_e~p |    285,513    14.88803    18.96989          1         99
+ingreso_pe~a |          0
+educac~madre |          0
+-------------+---------------------------------------------------------
+comple~madre |          0
+educac~padre |          0
+comple~padre |          0
+estudio_in~r |          0
+tipo_insti~n |          0
+-------------+---------------------------------------------------------
+titulacion~a |          0
+dispositiv~1 |          0
+dispositiv~2 |          0
+dispositiv~3 |          0
+dispositiv~4 |          0
+-------------+---------------------------------------------------------
+dispositiv~5 |          0
+uso_dispos~1 |          0
+uso_dispos~2 |          0
+uso_dispos~3 |          0
+hogar_cone~t |          0
+-------------+---------------------------------------------------------
+conexion_i~e |          0
+    cod_sexo |    285,513    1.547852    .4977057          1          2
+         rbd |          0
+  codigo_ens |          0
+local_educ~l |          0
+-------------+---------------------------------------------------------
+unidad_edu~a |          0
+nombre_uni~c |          0
+rama_educa~l |          0
+ dependencia |          0
+codigo_re~so |    285,513    9.448197    4.056922          0         16
+-------------+---------------------------------------------------------
+nombre_reg~o |          0
+codigo_pr~so |          0
+nombre_pr~so |          0
+codigo_co~so |          0
+nombre_co~so |          0
+-------------+---------------------------------------------------------
+anyo_de_eg~o |    285,513    2019.876     3.12195       1961       2021
+promedio_n~s |          0
+    ptje_nem |    285,513    586.9937    135.4347          0        845
+porc_sup_n~s |    285,513    48.75179    28.19988          0        100
+ptje_ranking |    285,513    606.6674    149.6499          0        850
+-------------+---------------------------------------------------------
+ clec_actual |          0
+ mate_actual |          0
+ hcso_actual |          0
+ cien_actual |          0
+prom_cm_ac~l |          0
+-------------+---------------------------------------------------------
+percentil_~l |          0
+         bea |          0
+clec_anter~r |          0
+mate_anter~r |          0
+hcso_anter~r |          0
+-------------+---------------------------------------------------------
+cien_anter~r |          0
+prom_cm_an~r |          0
+percentil_~r |          0
+puntajes_p~o |    285,513    1.257522    .6435193          1          3
+   prueba_cl |          0
+-------------+---------------------------------------------------------
+    forma_cl |    285,513    84.34897     39.1304          0        105
+correctas_cl |    285,513    27.27548     15.6096          0         60
+  erradas_cl |    285,513    21.81405    13.56765          0         56
+ omitidas_cl |    285,513    .2904316    1.983056          0         60
+ prueba_mate |          0
+-------------+---------------------------------------------------------
+  forma_mate |    285,513    91.69807    43.67443          0        115
+correctas_~e |    285,513    16.64498    12.33572          0         60
+erradas_mate |    285,513    31.91186    17.92974          0         58
+omitidas_m~e |    285,513    .3538543    2.118614          0         60
+  prueba_hcs |          0
+-------------+---------------------------------------------------------
+   forma_hcs |    285,513    55.67233    60.99188          0        125
+correctas~cs |    285,513    10.47002    13.38723          0         60
+ erradas_hcs |    285,513    16.70781    19.56004          0         57
+omitidas_hcs |    285,513     .094346    .9990146          0         60
+ prueba_cbio |          0
+-------------+---------------------------------------------------------
+  forma_cbio |    285,513    49.53539    71.41428          0        155
+correctas_~o |    285,513     9.28577    15.16467          0         75
+erradas_cbio |    285,513    14.96493     22.7201          0         69
+omitidas_c~o |    285,513    .1136025    1.305435          0         75
+ prueba_cfis |          0
+-------------+---------------------------------------------------------
+  forma_cfis |    285,513    13.81335    45.31782          0        165
+correctas~is |    285,513    2.815595    10.05886          0         75
+erradas_cfis |    285,513    3.531773    12.25268          0         70
+omitidas_c~s |    285,513    .0287868    .6920784          0         75
+ prueba_cqui |          0
+-------------+---------------------------------------------------------
+  forma_cqui |    285,513    10.73635    41.67316          0        174
+correctas_~i |    285,513    2.147251    9.170464          0         75
+erradas_cqui |    285,513    2.500082     10.4278          0         70
+omitidas_c~i |    285,513    .0211059    .6299919          0         75
+  prueba_ctp |          0
+-------------+---------------------------------------------------------
+   forma_ctp |    285,513    13.03713    47.00185          0        185
+correctas_~p |    285,513    1.608725    6.157181          0         75
+ erradas_ctp |    285,513    3.720496    13.57936          0         70
+omitidas_ctp |    285,513    .0290285    .7189582          0         73
+
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 2.4 -----
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+. ds
+mrun          fecha_naci~o  ocupacion_8   con_quien_~7  educac~padre  dispositiv~5  local_educ~l  codigo_co~so  hcso_actual   prom_cm_an~r  forma_mate    prueba_cbio   omitidas_c~s  erradas_ctp
+anyo_proceso  economicam~e  tiene_trab~m  con_quien_~8  comple~padre  uso_dispos~1  unidad_edu~a  nombre_co~so  cien_actual   percentil_~r  correctas_~e  forma_cbio    prueba_cqui   omitidas_ctp
+codigo_re~io  ocupacion_1   horario_tr~o  con_quien_~9  estudio_in~r  uso_dispos~2  nombre_uni~c  anyo_de_eg~o  prom_cm_ac~l  puntajes_p~o  erradas_mate  correctas_~o  forma_cqui
+codigo_pr~io  ocupacion_2   con_quien_~1  con_quien~10  tipo_insti~n  uso_dispos~3  rama_educa~l  promedio_n~s  percentil_~l  prueba_cl     omitidas_m~e  erradas_cbio  correctas_~i
+codigo_co~io  ocupacion_3   con_quien_~2  cuantos_tr~m  titulacion~a  hogar_cone~t  dependencia   ptje_nem      bea           forma_cl      prueba_hcs    omitidas_c~o  erradas_cqui
+nombre_pr~io  ocupacion_4   con_quien_~3  personas_e~p  dispositiv~1  conexion_i~e  codigo_re~so  porc_sup_n~s  clec_anter~r  correctas_cl  forma_hcs     prueba_cfis   omitidas_c~i
+nombre_co~io  ocupacion_5   con_quien_~4  ingreso_pe~a  dispositiv~2  cod_sexo      nombre_reg~o  ptje_ranking  mate_anter~r  erradas_cl    correctas~cs  forma_cfis    prueba_ctp
+ciudad_dom~o  ocupacion_6   con_quien_~5  educac~madre  dispositiv~3  rbd           codigo_pr~so  clec_actual   hcso_anter~r  omitidas_cl   erradas_hcs   correctas~is  forma_ctp
+sexo          ocupacion_7   con_quien_~6  comple~madre  dispositiv~4  codigo_ens    nombre_pr~so  mate_actual   cien_anter~r  prueba_mate   omitidas_hcs  erradas_cfis  correctas_~p
+
+. local vars `r(varlist)'
+
+. foreach x in `vars' {
+  2.         quietly drop if missing(`x')
+  3. }
+
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 2.5 -----
+. destring educacion_madre educacion_padre, replace
+educacion_madre: all characters numeric; replaced as byte
+(1 missing value generated)
+educacion_padre: all characters numeric; replaced as byte
+(2 missing values generated)
+
+. label define educ_parent_label 1 "Nunca asistió" 2 "Educación Preescolar" ///
+>         3 "Educación especial" 9 "Primaria o preparatoria (sist. antiguo)" ///
+>         5 "Educación básica" 6 "Humanidades" 7 "Educación Media Cient-Hum" ///
+>         8 "Técnica, Comercial, Industrial o Normalista (sist. antiguo)" ///
+>         9 "Educación media técnico profesional" ///
+>         10 "Técnico Nivel Superior (Carrera 1-3 años)" ///
+>         11 "Profesional (Carrera +4 años)" 12 "Postgrado (magíster/doctorado)" ///
+>         13 "Desconozco la info." 99 "Prefiero no responder"
+
+. label values educacion_padre educ_parent_label
+
+. label values educacion_madre educ_parent_label
+
+. 
+. drop if educacion_madre == 99 | educacion_padre == 99 | educacion_madre == 13 | ///
+>         educacion_padre == 13
+(66,593 observations deleted)
+
+. gen parent_es_profesional = 1 if educacion_madre >= 11 | educacion_padre >= 11
+(160,867 missing values generated)
+
+. replace parent_es_profesional = 0 if parent_es_profesional != 1
+(160,867 real changes made)
+
+. **  -----------------------
+. 
+. **  ---- Pregunta 2.6 -----
+. destring dependencia tiene_trabajo_rem economicamente sexo, replace
+dependencia: all characters numeric; replaced as byte
+(2439 missing values generated)
+tiene_trabajo_rem already numeric; no replace
+economicamente already numeric; no replace
+sexo already numeric; no replace
+
+. 
+. label define dependencia_label 1 "Corporación Municipal" 2 "Municipal" ///
+>         3 "Particular Subvencionado" 4 "Particular Pagado" ///
+>         5 "Corporación de Adm. Delegada" 6 "Servicio Local de Educación (SLE)"
+
+. label values dependencia dependencia_label
+
+. 
+. label define tiene_trabajo_rem_label 0 "No" 1 "Sí, ocasionalmente" ///
+>         2 "Sí, permanentemente" 9 "Prefiero no responder"
+
+. label values tiene_trabajo_rem tiene_trabajo_rem_label
+
+. 
+. label define econ_label 1 "Dependiente (a ingresos familiares)" ///
+>         2 "Independiente (a ingresos familiares)" 9 "Prefiero no responder"
+
+. label values economicamente econ_label
+
+. 
+. label define sexo_label 1 "Masculino" 2 "Femenino"
+
+. label values sexo cat_label
+
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 2.7 -----
+. label variable ptje_nem "Puntaje PTU asignado al promedio general de notas (NEM)"
+
+. ttest ptje_nem, by(parent_es_profesional)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 | 160,867    579.7453    .3188874    127.9001    579.1203    580.3703
+       1 |  58,053    641.1267    .5222925    125.8421     640.103    642.1504
+---------+--------------------------------------------------------------------
+Combined | 218,920    596.0224    .2782877    130.2077    595.4769    596.5678
+---------+--------------------------------------------------------------------
+    diff |           -61.38137     .616626               -62.58994    -60.1728
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = -99.5439
+H0: diff = 0                                     Degrees of freedom =   218918
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 1.0000
+
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 2.8 -----
+. count if sexo == 2 & parent_es_profesional == 1
+  29,787
+
+. *135.591
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 2.9 -----
+. asdoc sum ptje_nem, stat(N mean sd) by(dependencia) ///
+>          title(Estadisticos del NEM por dependencia) ///
+>          labels save(nem_stats_by_dep.doc) replace
+dependencia
+
+Summary for variables: ptje_nem
+Group variable: __000000 (DEPENDENCIA)
+
+        __000000 |         N      Mean        SD
+-----------------+------------------------------
+Corporación Muni |     19448  577.8411  134.4529
+Corporación de A |      7029  551.1687  114.5106
+       Municipal |     38151   587.869  130.3908
+Particular Pagad |     26909  676.1015  106.7919
+Particular Subve |    116911  592.6535  120.0223
+Servicio Local d |      8033  573.6406  129.5263
+-----------------+------------------------------
+           Total |    216481  598.7999  125.6437
+------------------------------------------------
+(file nem_stats_by_dep.doc not found)
+Click to Open File:  nem_stats_by_dep.doc
+
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 2.10 ----
+. drop if ptje_nem == 0
+(2,532 observations deleted)
+
+. 
+. preserve
+
+. keep if inlist(dependencia, 2, 3, 4)
+(35,787 observations deleted)
+
+. graph box ptje_nem, over(dependencia) ///
+>         title("Puntaje NEM por tipo de colegio")   
+
+. graph export nem_by_tipo_col.png, replace
+file /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP/nem_by_tipo_col.png saved as PNG format
+
+. restore
+
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 2.11 ----
+. destring ingreso_percapita_grupo_fa, replace
+ingreso_percapita_grupo_fa: all characters numeric; replaced as byte
+(8561 missing values generated)
+
+. label variable ingreso_percapita_grupo_fa "Ingreso per cápita del grupo familiar"
+
+. drop if ingreso_percapita_grupo_fa == 99
+(31,745 observations deleted)
+
+. 
+. gen median_income = 67867/2 if ingreso_percapita_grupo_fa == 1
+(152,178 missing values generated)
+
+. replace median_income = (107284+67867)/2 if ingreso_percapita_grupo_fa == 2
+(28,182 real changes made)
+
+. replace median_income = (142173+107284)/2 if ingreso_percapita_grupo_fa == 3
+(17,986 real changes made)
+
+. replace median_income = (177045+142173)/2 if ingreso_percapita_grupo_fa == 4
+(13,599 real changes made)
+
+. replace median_income = (215995+177045)/2 if ingreso_percapita_grupo_fa == 5
+(10,571 real changes made)
+
+. replace median_income = (271791+215995)/2 if ingreso_percapita_grupo_fa == 6
+(11,694 real changes made)
+
+. replace median_income = (271791+345328)/2 if ingreso_percapita_grupo_fa == 7
+(16,376 real changes made)
+
+. replace median_income = (464965+345328)/2 if ingreso_percapita_grupo_fa == 8
+(16,451 real changes made)
+
+. replace median_income = (464965+756201)/2 if ingreso_percapita_grupo_fa == 9
+(13,549 real changes made)
+
+. replace median_income = 1000000 if ingreso_percapita_grupo_fa == 10
+(15,209 real changes made)
+
+. 
+. label variable median_income "Mediana del ingreso per cápita familiar"
+
+. **  -----------------------
+. 
+. **  ---- Pregunta 2.12 ----
+. binscatter median_income ptje_nem, ytitle(Mediana del ingreso per cápita familiar) ///
+>         xtitle(Puntaje PTU asignado al NEM) ///
+>         title(Correlación entre puntaje NEM e ingreso)
+
+. graph export "binscatter_ing_nem.png", replace
+file /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP/binscatter_ing_nem.png saved as PNG format
+
+. **  -----------------------
+. 
+. **  ---- Pregunta 2.13 ----
+. reg ptje_nem median_income
+
+      Source |       SS           df       MS      Number of obs   =   176,082
+-------------+----------------------------------   F(1, 176080)    =   4923.89
+       Model |  62194720.9         1  62194720.9   Prob > F        =    0.0000
+    Residual |  2.2241e+09   176,080  12631.2074   R-squared       =    0.0272
+-------------+----------------------------------   Adj R-squared   =    0.0272
+       Total |  2.2863e+09   176,081  12984.3522   Root MSE        =    112.39
+
+-------------------------------------------------------------------------------
+     ptje_nem | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+median_income |   .0000682   9.72e-07    70.17   0.000     .0000663    .0000701
+        _cons |   583.1605    .377279  1545.70   0.000      582.421    583.8999
+-------------------------------------------------------------------------------
+
+. **  -----------------------
+. 
+. **  ---- Pregunta 2.14 ----
+. destring rbd, replace
+rbd: all characters numeric; replaced as long
+(1435 missing values generated)
+
+. sum rbd
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+         rbd |    183,208    11910.45    9065.336          1      99999
+
+. reg ptje_nem median_income
+
+      Source |       SS           df       MS      Number of obs   =   176,082
+-------------+----------------------------------   F(1, 176080)    =   4923.89
+       Model |  62194720.9         1  62194720.9   Prob > F        =    0.0000
+    Residual |  2.2241e+09   176,080  12631.2074   R-squared       =    0.0272
+-------------+----------------------------------   Adj R-squared   =    0.0272
+       Total |  2.2863e+09   176,081  12984.3522   Root MSE        =    112.39
+
+-------------------------------------------------------------------------------
+     ptje_nem | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+median_income |   .0000682   9.72e-07    70.17   0.000     .0000663    .0000701
+        _cons |   583.1605    .377279  1545.70   0.000      582.421    583.8999
+-------------------------------------------------------------------------------
+
+. **  -----------------------
+. 
+. **  ---- Pregunta 2.15 ----
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
+
+. use "puntaje_economico.dta", clear
+
+. import delimited "D_MATRICULA_PDT_2022_PUB_MRUN.csv", clear
+(encoding automatically selected: UTF-8)
+(10 vars, 111,150 obs)
+
+. merge m:1 mrun anyo_proceso using "puntaje_economico.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                       183,583
+        from master                     4,536  (_merge==1)
+        from using                    179,047  (_merge==2)
+
+    Matched                           106,614  (_merge==3)
+    -----------------------------------------
+
+. 
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP
+
+. asdoc sum _merge, save(mergep2_16.doc) fhc(\i) replace
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      _merge |    290,197    2.351754    .5092009          1          3
+Click to Open File:  mergep2_16.doc
+
+. 
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
+
+. drop _merge
+
+. save "tarea1_parte2_matias_munoz.dta", replace
+file tarea1_parte2_matias_munoz.dta saved
+
+. 
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP
 
 . **  -----------------------
 . 
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP/Tarea
-> 1.log
+       log:  /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP/Tarea1.log
   log type:  text
- closed on:   5 Apr 2025, 09:57:13
----------------------------------------------------------------------------------------
+ closed on:   5 Apr 2025, 15:57:06
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
