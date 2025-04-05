@@ -7,6 +7,13 @@ log using Tarea1.log, replace
 ** ---- Instalación librerías ----
 *ssc install asdoc, replace
 
+************************************
+************************************
+***								 ***
+*** ----    PREGUNTA 1.     ---- ***
+***								 ***
+************************************
+************************************
 
 **  ---- Pregunta 1.1 -----
 use "ene-2023-11-ond.dta", clear
@@ -106,7 +113,7 @@ foreach x in $ste {
 	save ocp_by_`x'.dta, replace
 	restore
 }
-**  -----------------------
+**  ------------------------
 
 **  ---- Pregunta 1.10 -----
 
@@ -118,7 +125,7 @@ foreach x in $ste {
 	save ocp_by_`x'.dta, replace
 	restore
 }
-**  -----------------------
+**  ------------------------
 
 **  ---- Pregunta 1.11 -----
 gen tasa_de_particip = round(100*(fuerza_trabajo/(mayoresde15*ponderador)),0.01) ///
@@ -145,7 +152,7 @@ foreach x in $ste {
 	local lbl: variable label `x'
 	local lbl_lower = strlower("`lbl'")
 	quietly graph bar tasa_de_particip, over(`x', label(angle(45))) ///
-		ytitle("`y_label'") title("Tasa de participación") ///
+		ytitle("`y_label'") title("Tasa de participación (%)") ///
 		subtitle("Por `lbl_lower'") xsize(2) ysize(2) ///
 		graphregion(margin(large)) scheme(stcolor) style(verdana)
 	*Exportamos el gráfico
@@ -153,11 +160,125 @@ foreach x in $ste {
 	
 	restore
 }
+**  ------------------------
 
-*use ocp_by_est_conyugal.dta, clear
-*browse
+**  ---- Pregunta 1.12 -----
+preserve
 
-**  -----------------------
+*preparamos el collapse
+replace mayoresde15 = mayoresde15*ponderador
+drop ponderador
+keep if edad >= 15
+
+*Hacemos el collapse
+collapse (sum) desocupados_escalado mayoresde15, by(region)
+gen tasa_de_desemp = round(100*(desocupados_escalado/(mayoresde15)),0.01)
+gsort -tasa_de_desemp
+keep in 1/5
+
+*Graficamos
+quietly graph hbar tasa_de_desemp, over(region, sort(tasa_de_desemp) descending) ///
+	ytitle("Tasa de desempleo (%)") title("Tasa de desempleo (%)") ///
+	subtitle("Por región") xsize(2) ysize(2) ///
+	graphregion(margin(large)) scheme(stcolor) style(verdana)
+*Exportamos el gráfico
+quietly graph export tasa_de_desemp_region.png, replace
+
+restore	
+**  ------------------------
+
+**  ---- Pregunta 1.13 -----
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+
+use "ene-2023-ond_delim.dta", clear
+ds
+local vars1 `r(varlist)'
+
+use "esi-2023---personas.dta", clear
+
+merge 1:1 _n using "ene-2023-ond_delim.dta"
+
+keep `vars1' ing_t_t ing_ot ing_t_d ing_t_p fact_cal_esi _merge
+
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1"
+
+asdoc tab _merge, label title(Merge Results) fhc(\b) save(merget1.doc) replace
+drop _merge
+
+save "tarea1 parte1 matias munoz.dta", replace
+	
+**  ------------------------
+
+**  ---- Pregunta 1.14 -----
+* Yo nací un 2 de abril
+* 2 + 20 = 22
+* eliminamos los que terminan en 22, 44, y 88
+
+gen desc_idrph = 1 if mod(idrph, 100) == 22 | mod(idrph, 100) == 44 | ///
+	mod(idrph, 100) == 88
+drop if desc_idrph == 1
+**  ------------------------
+
+**  ---- Pregunta 1.15 -----
+gen ponderador = round(fact_cal_esi)
+
+preserve
+drop if sector == 3
+graph bar (mean) ing_t_t, over(sector) ///
+	ytitle("Ingreso promedio") title("Ingreso promedio") ///
+	subtitle("Por sector") xsize(2) ysize(2) ///
+	graphregion(margin(large)) scheme(stcolor) style(verdana)
+quietly graph export ing_por_sector.png, replace
+restore
+**  ------------------------
+
+**  ---- Pregunta 1.16 -----
+hist ing_t_t, bin(100) color(gs12) kdensity
+graph export "hist1.png", replace
+
+preserve
+drop if ing_t_t == 0
+hist ing_t_t, bin(100) color(gs12) kdensity
+graph export "hist2.png", replace
+
+drop if ing_t_t < 5000000
+hist ing_t_t, bin(100) color(gs12) kdensity
+graph export "hist3.png", replace
+
+restore
+
+sum ing_t_t
+**  ------------------------
+
+
+**  ---- Pregunta 1.17 -----
+gen ed_uni = 1 if cine >= 7
+replace ed_uni = 0 if ed_uni != 1
+**  ------------------------
+
+**  ---- Pregunta 1.18 -----
+gen log_ing = log(ing_t_t * ponderador)
+gen sq_edad = edad*edad
+
+local controles edad sq_edad sexo region est_conyugal orig1 tipo habituales ///
+	sector asocia
+
+reg ed_uni log_ing `controles'
+**  ------------------------
+
+************************************
+************************************
+***								 ***
+*** ----    PREGUNTA 2.     ---- ***
+***								 ***
+************************************
+************************************
+
+clear all
+macro drop _all
+
+
+
 
 log close
 

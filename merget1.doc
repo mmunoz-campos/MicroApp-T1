@@ -1,0 +1,33 @@
+{\rtf1\ansi\deff0 {\fonttbl{\f0\fnil Garamond;}}
+{\info {\author .}{\company .}{\title .}}
+\deflang1033\plain\fs20
+{\footer\pard\qc\plain\f0\fs20\chpgn\par}
+{
+{
+{\b\qc\line Merge Results }{\par}
+\trowd\trgaph108\trleft-108\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs\cellx2200\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs\cellx3700\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs\cellx5200\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs\cellx6700
+\ql {\b Matching result from merge}\cell
+\qr {\b Freq.}\cell
+\qr {\b Percent}\cell
+\qr {\b Cum.}\cell
+\row
+\trowd\trgaph108\trleft-108\cellx2200\cellx3700\cellx5200\cellx6700
+\ql {Matched (3)}\cell
+\qr {97998}\cell
+\qr {100.00}\cell
+\qr {100.00}\cell
+\row
+\trowd\trgaph108\trleft-108\clbrdrt\brdrw10\brdrs\cellx2200\clbrdrt\brdrw10\brdrs\cellx3700\clbrdrt\brdrw10\brdrs\cellx5200\clbrdrt\brdrw10\brdrs\cellx6700 
+\ql {Total}\cell
+\qr {97998}\cell
+\qr {100.00}\cell
+\qr {}\cell
+\row
+}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw15\brdrs\cellx6700\cell
+\row}
+
+
+\writepositionforappend
+}}
