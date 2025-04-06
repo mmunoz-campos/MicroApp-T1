@@ -194,7 +194,7 @@ merge 1:1 _n using "ene-2023-ond_delim.dta"
 keep `vars1' ing_t_t ing_ot ing_t_d ing_t_p fact_cal_esi _merge
 asdoc tab _merge, label title(Merge Results) fhc(\b) save(merget1.doc) replace
 drop _merge
-save "tarea1 parte1 matias munoz.dta", replace
+save "tarea1_parte1_matias_munoz.dta", replace
 	
 **  ------------------------
 
