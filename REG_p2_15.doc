@@ -1,0 +1,30 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx4176\clbrdrt\brdrs\cellx6048\clbrdrt\brdrs\cellx7920\clbrdrt\brdrs\cellx9792\clbrdrt\brdrs\cellx11664
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\qc (4)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx4176\cellx6048\cellx7920\cellx9792\cellx11664
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx4176\clbrdrb\brdrs\cellx6048\clbrdrb\brdrs\cellx7920\clbrdrb\brdrs\cellx9792\clbrdrb\brdrs\cellx11664
+\ql VARIABLES\cell\qc ptje_nem\cell\qc ptje_nem\cell\qc ptje_nem\cell\qc ptje_nem\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx4176\cellx6048\cellx7920\cellx9792\cellx11664
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql median_income\cell\qc 7.37e-05***\cell\qc 7.01e-05***\cell\qc 6.97e-05***\cell\qc 6.68e-05***\cell\row
+\ql \cell\qc (9.48e-07)\cell\qc (9.55e-07)\cell\qc (9.51e-07)\cell\qc (9.52e-07)\cell\row
+\ql rbd\cell\qc -0.000380***\cell\qc -0.000406***\cell\qc -0.000425***\cell\qc -0.000398***\cell\row
+\ql \cell\qc (2.94e-05)\cell\qc (2.95e-05)\cell\qc (2.93e-05)\cell\qc (2.94e-05)\cell\row
+\ql sexo_f\cell\qc 32.94***\cell\qc 33.09***\cell\qc 33.14***\cell\qc 33.25***\cell\row
+\ql \cell\qc (0.539)\cell\qc (0.540)\cell\qc (0.537)\cell\qc (0.538)\cell\row
+\ql hogar_conexion_internet\cell\qc \cell\qc 42.55***\cell\qc 43.39***\cell\qc 42.37***\cell\row
+\ql \cell\qc \cell\qc (1.197)\cell\qc (1.197)\cell\qc (1.212)\cell\row
+\ql estudio_institucion_superior\cell\qc \cell\qc \cell\qc -43.38***\cell\qc -29.31***\cell\row
+\ql \cell\qc \cell\qc \cell\qc (0.868)\cell\qc (0.925)\cell\row
+\ql econ_indep\cell\qc \cell\qc \cell\qc \cell\qc -63.80***\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc (1.239)\cell\row
+\ql Constant\cell\qc 568.3***\cell\qc 529.4***\cell\qc 533.4***\cell\qc 537.8***\cell\row
+\ql \cell\qc (0.602)\cell\qc (1.257)\cell\qc (1.260)\cell\qc (1.275)\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 174,706\cell\qc 172,614\cell\qc 172,614\cell\qc 168,756\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx4176\clbrdrb\brdrs\cellx6048\clbrdrb\brdrs\cellx7920\clbrdrb\brdrs\cellx9792\clbrdrb\brdrs\cellx11664
+\ql R-squared\cell\qc 0.049\cell\qc 0.055\cell\qc 0.069\cell\qc 0.083\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}

@@ -18,15 +18,19 @@ log using Tarea1.log, replace
 *macro drop _all
 
 **  ---- Pregunta 2.2 -----
-*cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
-*import delimited "A_INSCRITOS_PUNTAJES_PDT_2022_PUB_MRUN.csv", clear
-*save "inscritos-puntajes.dta", replace
-*import delimited "B_SOCIOECONOMICO_DOMICILIO_PDT_2022_PUB_MRUN.csv", clear
-*merge 1:1 _n using "inscritos-puntajes.dta"
-*save "puntaje_economico.dta", replace
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+import delimited "A_INSCRITOS_PUNTAJES_PDT_2022_PUB_MRUN.csv", clear
+save "inscritos-puntajes.dta", replace
+import delimited "B_SOCIOECONOMICO_DOMICILIO_PDT_2022_PUB_MRUN.csv", clear
+merge 1:1 _n using "inscritos-puntajes.dta"
 
-*cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP"
-*asdoc sum _merge, save(mergep22.doc) fhc(\i) replace
+
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP"
+asdoc tab _merge, label title(Merge Results) fhc(\b) save(mergetp22.doc) replace
+
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+drop _merge
+save "puntaje_economico.dta", replace
 **  -----------------------
 
 
@@ -122,7 +126,7 @@ restore
 
 **  ---- Pregunta 2.11 ----
 destring ingreso_percapita_grupo_fa, replace
-label variable ingreso_percapita_grupo_FA "Ingreso per cápita del grupo familiar"
+label variable ingreso_percapita_grupo_fa "Ingreso per cápita del grupo familiar"
 drop if ingreso_percapita_grupo_fa == 99
 
 gen median_income = 67867/2 if ingreso_percapita_grupo_fa == 1
@@ -136,8 +140,128 @@ replace median_income = (464965+345328)/2 if ingreso_percapita_grupo_fa == 8
 replace median_income = (464965+756201)/2 if ingreso_percapita_grupo_fa == 9
 replace median_income = 1000000 if ingreso_percapita_grupo_fa == 10
 
+label variable median_income "Mediana del ingreso per cápita familiar"
+**  -----------------------
+
+**  ---- Pregunta 2.12 ----
+binscatter median_income ptje_nem, ytitle(Mediana del ingreso per cápita familiar) ///
+	xtitle(Puntaje PTU asignado al NEM) ///
+	title(Correlación entre puntaje NEM e ingreso)
+graph export "binscatter_ing_nem.png", replace
+**  -----------------------
+
+**  ---- Pregunta 2.13 ----
+reg ptje_nem median_income
+**  -----------------------
+
+**  ---- Pregunta 2.14 ----
+destring rbd, replace
+sum rbd
+reg ptje_nem median_income rbd, robust
+outreg2 using REG_p2_14.doc, replace word
+**  -----------------------
+
+**  ---- Pregunta 2.15 ----
+gen sexo_f = 1 if sexo == 2
+replace sexo_f = 0 if sexo != 2
+
+reg ptje_nem median_income rbd sexo_f, robust
+outreg2 using REG_p2_15.doc, replace word
+
+replace hogar_conexion_internet = "1" if hogar_conexion_internet == "S"
+replace hogar_conexion_internet = "0" if hogar_conexion_internet == "N"
+drop if hogar_conexion_internet == "9"
+destring hogar_conexion_internet, replace
+
+reg ptje_nem median_income rbd sexo_f ///
+	hogar_conexion_internet, robust
+outreg2 using REG_p2_15.doc, append word
+
+replace estudio_institucion_superior = "1" if estudio_institucion_superior == "S"
+replace estudio_institucion_superior = "0" if estudio_institucion_superior == "N"
+drop if estudio_institucion_superior == "9"
+destring estudio_institucion_superior, replace
+
+reg ptje_nem median_income rbd sexo_f ///
+	hogar_conexion_internet estudio_institucion_superior, robust
+outreg2 using REG_p2_15.doc, append word
+
+gen econ_indep = 1 if economicamente == 2
+replace econ_indep = 0 if economicamente == 1
+drop if economicamente == 9
+
+reg ptje_nem median_income rbd sexo_f ///
+	hogar_conexion_internet estudio_institucion_superior ///
+	econ_indep, robust
+outreg2 using REG_p2_15.doc, append word
+
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+save "puntaje_economico.dta", replace
+**  -----------------------
+
+**  ---- Pregunta 2.16 ----
+clear all
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+use "puntaje_economico.dta", clear
+destring mrun anyo_proceso, replace
+save "puntaje_economico.dta", replace
+
+import delimited "D_MATRICULA_PDT_2022_PUB_MRUN.csv", clear
+destring mrun anyo_proceso, replace
+
+duplicates report mrun
+merge m:1 mrun anyo_proceso using "puntaje_economico.dta"
+
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP"
+asdoc tab _merge, label title(Merge Results) fhc(\b) save(mergetp2_16.doc) replace
+
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+keep if _merge == 3
+drop _merge
+save "tarea1_parte2_matias_munoz.dta", replace
+
+cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/Pregunta2-T1-MAP"
+**  -----------------------
+
+**  ---- Pregunta 2.17 ----
+duplicates drop mrun, force
+**  -----------------------
 
 
+**  ---- Pregunta 2.18 ----
+gen elite = 1 if sigla_universidad == "PUCCH" | sigla_universidad == "UCHILE"
+replace elite = 0 if elite != 1
+**  -----------------------
+
+**  ---- Pregunta 2.19 ----
+kdensity ptje_nem if elite ==0, legend(label(1 "NEM matr. resto de Chile")) ///
+	addplot(kdensity ptje_nem if elite ==1, legend(label(2 "NEM matr. UCH y PUC")) ///
+	title("Distr. de puntaje NEM para matriculados") ///
+	subtitle("En universidades UCH y PUC respecto al resto de Chile") ///
+	xtitle("Puntaje NEM") ytitle("Densidad") note("") caption("") ///
+	)
+graph export "puntajes_elite.png", replace
+**  -----------------------
+
+**  ---- Pregunta 2.20 ----
+label define parent_es_profesional_label 1 "Al menos un padre es profesional" ///
+	0 "Ningún padre es profesional"
+label values parent_es_profesional parent_es_profesional_label
+label variable parent_es_profesional "Alguno de los padres es profesional"
+label variable elite "Madriculado en la PUC o la UCH"
+
+label define elite_label 1 "Sí" 0 "No"
+label values elite elite_label
+		 	
+asdoc tab parent_es_profesional elite, column ///
+       title(Proporcion de matriculados en UCH y PUC) ///
+       labels save(nem_by_elite.doc) replace
+
+graph hbar (percent) elite, over(parent_es_profesional) ///
+	ytitle("Proporción de matriculados UCH y PUC") ///
+	title("Proporción de matriculados UCH y PUC") ///
+	subtitle("Según si al menos uno de sus padres tiene título univ.")
+graph export "elite_over_prntpf.png", replace
 **  -----------------------
 
 log close

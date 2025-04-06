@@ -1,0 +1,14 @@
+	(1)
+VARIABLES	ptje_nem
+	
+median_income	6.91e-05***
+	(9.59e-07)
+rbd	-0.000393***
+	(2.98e-05)
+Constant	588.5***
+	(0.504)
+	
+Observations	174,706
+R-squared	0.028
+Robust standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

@@ -1,0 +1,22 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx2016\clbrdrt\brdrs\cellx3888
+\ql \cell\qc (1)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx2016\cellx3888
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx2016\clbrdrb\brdrs\cellx3888
+\ql VARIABLES\cell\qc ptje_nem\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx2016\cellx3888
+\ql \cell\qc \cell\row
+\ql median_income\cell\qc 6.91e-05***\cell\row
+\ql \cell\qc (9.59e-07)\cell\row
+\ql rbd\cell\qc -0.000393***\cell\row
+\ql \cell\qc (2.98e-05)\cell\row
+\ql Constant\cell\qc 588.5***\cell\row
+\ql \cell\qc (0.504)\cell\row
+\ql \cell\qc \cell\row
+\ql Observations\cell\qc 174,706\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx2016\clbrdrb\brdrs\cellx3888
+\ql R-squared\cell\qc 0.028\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}
