@@ -1,23 +1,42 @@
---------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/mmunozcampos/Downloads/Tarea 1 Econometria/Tarea1.log
+       log:  /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1/Tarea1.log
   log type:  text
- opened on:  22 Mar 2025, 16:58:24
+ opened on:   6 Apr 2025, 15:44:26
 
 . 
-. ** Pregunta 1.1
+. ** ---- Instalación librerías ----
+. *ssc install asdoc, replace
+. *ssc install estout, replace
+. ** -------------------------------
+. 
+. ************************************
+. ************************************
+. ***                                                              ***
+. *** ----    PREGUNTA 1.     ---- ***
+. ***                                                              ***
+. ************************************
+. ************************************
+. 
+. **  ---- Pregunta 1.1 -----
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
+
 . use "ene-2023-11-ond.dta", clear
 
+. **  -----------------------
 . 
+. **  ---- Pregunta 1.2 -----
+. *summarize
 . describe
 
 Contains data from ene-2023-11-ond.dta
  Observations:        97,998                  
     Variables:           178                  26 Dec 2024 16:58
---------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
---------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
 ano_trimestre   int     %10.0g                Año
 mes_central     byte    %24.0g     trim_val   Trimestre
 ano_encuesta    int     %10.0g                Año de recolección de datos
@@ -39,161 +58,277 @@ edad            int     %10.0g                Edad
 tramo_edad      byte    %15.0g     edad_val   Tramo de edad
 sexo            byte    %10.0g     sexo_val   Sexo
 parentesco      byte    %28.0g     parentesco_val
-                                              Parentesco con persona proveedora económica principal del hogar
+                                              Parentesco con persona proveedora económica
+                                                principal del hogar
 curso           byte    %17.0g     curso_val
                                               Curso más alto aprobado
 nivel           int     %35.0g     nivel_val
                                               Nivel educacional más alto aprobado
 termino_nivel   byte    %11.0g     sn_val     Término de nivel educacional
-estudia_actual  byte    %11.0g     sn_val     ¿Se encuentra estudiando actualmente en un establecimiento educacional?
-cine            int     %58.0g     cine_val   Clasificación Internacional de Nivel Educacional (CINE-97)
+estudia_actual  byte    %11.0g     sn_val     ¿Se encuentra estudiando actualmente en un
+                                                establecimiento educacional?
+cine            int     %58.0g     cine_val   Clasificación Internacional de Nivel Educacional
+                                                (CINE-97)
 est_conyugal    byte    %31.0g     conyugal_val
                                               Estado civil o conyugal
 proveedor       byte    %19.0g     proveedor_val
                                               Proveedor económico principal del hogar
-orig1           byte    %11.0g     sn_val     orig1. ¿Se considera perteneciente a algún pueblo indígena u originario?
+orig1           byte    %11.0g     sn_val     orig1. ¿Se considera perteneciente a algún pueblo
+                                                indígena u originario?
 orig2           byte    %24.0g     orig_val   orig2. ¿A cuál?
 orig3           str29   %-9s                  orig3. ¿A cuál?
 nacionalidad    int     %44.0g     pais_val   Nacionalidad
-mig1            byte    %16.0g     mig1_val   mig1. ¿En qué comuna o país vivía hace cinco años?
+mig1            byte    %16.0g     mig1_val   mig1. ¿En qué comuna o país vivía hace cinco
+                                                años?
 mig2_cod        long    %20.0g     comuna_val
                                               mig2. ¿En qué comuna?
 mig3_cod        int     %44.0g     pais_val   mig3. ¿En qué país?
-mig4            byte    %14.0g     mig4_val   mig4. Cuando nació, ¿en qué comuna o país vivía su madre?
+mig4            byte    %14.0g     mig4_val   mig4. Cuando nació, ¿en qué comuna o país vivía
+                                                su madre?
 mig5_cod        long    %20.0g     comuna_val
                                               mig5. ¿En qué comuna?
 mig6_cod        int     %44.0g     pais_val   mig6. ¿En qué país?
-a1              byte    %11.0g     sn_val     a1. La semana pasada, es decir, entre lunes y domingo, ¿trabajó por lo menos una
-a2              byte    %11.0g     sn_val     a2. Independientemente de lo que acaba de decir, ¿hizo algún negocio, 'pololo' u
-a3              byte    %11.0g     sn_val     a3. Por ese trabajo, ¿recibió o recibirá un pago, ya sea en dinero o en especie?
-a4              byte    %11.0g     sn_val     a4. Ese trabajo, ¿fue realizado para la empresa o negocio perteneciente a un mie
-a5              byte    %11.0g     sn_val     a5. Aunque no trabajó la semana pasada, ¿tenía durante dicho periodo un empleo,
+a1              byte    %11.0g     sn_val     a1. La semana pasada, es decir, entre lunes y
+                                                domingo, ¿trabajó por lo menos una
+a2              byte    %11.0g     sn_val     a2. Independientemente de lo que acaba de decir,
+                                                ¿hizo algún negocio, 'pololo' u
+a3              byte    %11.0g     sn_val     a3. Por ese trabajo, ¿recibió o recibirá un pago,
+                                                ya sea en dinero o en especie?
+a4              byte    %11.0g     sn_val     a4. Ese trabajo, ¿fue realizado para la empresa o
+                                                negocio perteneciente a un mie
+a5              byte    %11.0g     sn_val     a5. Aunque no trabajó la semana pasada, ¿tenía
+                                                durante dicho periodo un empleo,
 a6              byte    %55.0g     a6_val     a6. ¿Por qué razón no trabajó la semana pasada?
-a6_otro         str88   %-9s                  Especifica a6 = Otras razones de ausencia del trabajo
-a7              byte    %11.0g     sn_val     a7. Durante este periodo en que no trabajó, ¿siguió recibiendo sueldo o ganancia
+a6_otro         str88   %-9s                  Especifica a6 = Otras razones de ausencia del
+                                                trabajo
+a7              byte    %11.0g     sn_val     a7. Durante este periodo en que no trabajó,
+                                                ¿siguió recibiendo sueldo o ganancia
 a8              byte    %34.0g     a8_val     a8. ¿En cuánto tiempo más volverá a trabajar?
 b1              int     %77.0g     ciuo08_val
                                               b1. Grupo ocupacional según CIUO-08
 b2              byte    %106.0g    b2_val     b2. ¿Realizó ese trabajo…
 b3              byte    %35.0g     b3_val     b3. ¿Por ese trabajo...
-b4              byte    %11.0g     sn_val     b4. En ese trabajo, ¿emplea personas para su negocio o actividad? No incluya a m
-b5              byte    %20.0g     b5_val     b5. El negocio, empresa o institución donde trabajó la semana pasada era…
+b4              byte    %11.0g     sn_val     b4. En ese trabajo, ¿emplea personas para su
+                                                negocio o actividad? No incluya a m
+b5              byte    %20.0g     b5_val     b5. El negocio, empresa o institución donde
+                                                trabajó la semana pasada era…
 b6              byte    %39.0g     b6_val     b6. ¿Su trabajo en ese hogar es...
-b7a_1           byte    %11.0g     snna_val   b7a_1. Su empleador, ¿cotiza por usted en el sistema previsional o de pensión?
-b7a_2           byte    %11.0g     snna_val   b7a_2. Su empleador, ¿cotiza por usted en el sistema de salud (público o privado
-b7a_3           byte    %11.0g     snna_val   b7a_3. Su empleador, ¿cotiza por usted en el sistema de seguro de desempleo?
-b7b_1           byte    %11.0g     snna_val   b7b_1. En este trabajo, ¿tiene derecho, aunque no utilice, a vacaciones anuales?
-b7b_2           byte    %11.0g     snna_val   b7b_2. En este trabajo, ¿tiene derecho, aunque no utilice, a días pagados por en
-b7b_3           byte    %11.0g     snna_val   b7b_3. En este trabajo, ¿tiene derecho, aunque no utilice, a permiso por materni
-b7b_4           byte    %11.0g     snna_val   b7b_4. En este trabajo, ¿tiene derecho, aunque no utilice, a servicio de guarder
+b7a_1           byte    %11.0g     snna_val   b7a_1. Su empleador, ¿cotiza por usted en el
+                                                sistema previsional o de pensión?
+b7a_2           byte    %11.0g     snna_val   b7a_2. Su empleador, ¿cotiza por usted en el
+                                                sistema de salud (público o privado
+b7a_3           byte    %11.0g     snna_val   b7a_3. Su empleador, ¿cotiza por usted en el
+                                                sistema de seguro de desempleo?
+b7b_1           byte    %11.0g     snna_val   b7b_1. En este trabajo, ¿tiene derecho, aunque no
+                                                utilice, a vacaciones anuales?
+b7b_2           byte    %11.0g     snna_val   b7b_2. En este trabajo, ¿tiene derecho, aunque no
+                                                utilice, a días pagados por en
+b7b_3           byte    %11.0g     snna_val   b7b_3. En este trabajo, ¿tiene derecho, aunque no
+                                                utilice, a permiso por materni
+b7b_4           byte    %11.0g     snna_val   b7b_4. En este trabajo, ¿tiene derecho, aunque no
+                                                utilice, a servicio de guarder
 b8              byte    %11.0g     sn_val     b8. En ese empleo, ¿tiene contrato escrito?
-b9              byte    %60.0g     b9_val     b9. ¿La duración de ese contrato o acuerdo de trabajo es...
+b9              byte    %60.0g     b9_val     b9. ¿La duración de ese contrato o acuerdo de
+                                                trabajo es...
 b10             byte    %79.0g     b10_val    b10. ¿Su contrato o acuerdo definido es...
-b11_proxy       byte    %37.0g     sn_val     b11. ¿El pago por su actividad principal fue a través de sueldo, salario o jorna
-b12             byte    %76.0g     b12_val    b12. ¿Está contratado o tiene un acuerdo de trabajo...
+b11_proxy       byte    %37.0g     sn_val     b11. ¿El pago por su actividad principal fue a
+                                                través de sueldo, salario o jorna
+b12             byte    %76.0g     b12_val    b12. ¿Está contratado o tiene un acuerdo de
+                                                trabajo...
 b13_rev4cl_ca~s int     %66.0g     caenes_val
-                                              b13. Rama de actividad económica de empresa que le paga según CAENES
-i1              byte    %91.0g     i1_val     i1. La empresa, negocio o institución que le paga su sueldo, ¿está registrada en
-i2              byte    %11.0g     sn_val     i2. La empresa, negocio o institución que le paga su sueldo, ¿cuenta con los ser
-i3              byte    %30.0g     i3_val     i3. ¿Cuál es el nombre de la empresa, negocio o institución que le paga su sueld
-i3_v            byte    %20.0g     dir_val    i3_v. Verificación de respuesta entregada con Directorio de Empresas del INE
-i4              byte    %11.0g     sn_val     i4. La empresa, negocio o actividad en la que trabaja, ¿está registrada en el Se
-i5              byte    %68.0g     i5_val     i5. La empresa, negocio o actividad en la que trabaja ¿se encuentra registrada c
-i6              byte    %77.0g     i6_val     i6. ¿La empresa, negocio o actividad por cuenta propia...
-i7              byte    %11.0g     sn_val     i7. A través de la contabilidad, ¿se pueden separar los gastos del negocio de lo
-f7a             byte    %11.0g     sn_val     f7a. En su trabajo principal, ¿es miembro de un sindicato
-f7b             byte    %11.0g     sn_val     f7b. En su trabajo principal, ¿es miembro de una asociación de funcionarios
-f7c             byte    %11.0g     sn_val     f7c. En su trabajo principal, ¿es miembro de una asociación gremial
-f7d             byte    %11.0g     sn_val     f7d. En su trabajo principal, ¿es miembro de un colegio profesional
-f7e             byte    %11.0g     sn_val     f7e. En su trabajo principal, ¿es miembro de otro tipo de organización
+                                              b13. Rama de actividad económica de empresa que
+                                                le paga según CAENES
+i1              byte    %91.0g     i1_val     i1. La empresa, negocio o institución que le paga
+                                                su sueldo, ¿está registrada en
+i2              byte    %11.0g     sn_val     i2. La empresa, negocio o institución que le paga
+                                                su sueldo, ¿cuenta con los ser
+i3              byte    %30.0g     i3_val     i3. ¿Cuál es el nombre de la empresa, negocio o
+                                                institución que le paga su sueld
+i3_v            byte    %20.0g     dir_val    i3_v. Verificación de respuesta entregada con
+                                                Directorio de Empresas del INE
+i4              byte    %11.0g     sn_val     i4. La empresa, negocio o actividad en la que
+                                                trabaja, ¿está registrada en el Se
+i5              byte    %68.0g     i5_val     i5. La empresa, negocio o actividad en la que
+                                                trabaja ¿se encuentra registrada c
+i6              byte    %77.0g     i6_val     i6. ¿La empresa, negocio o actividad por cuenta
+                                                propia...
+i7              byte    %11.0g     sn_val     i7. A través de la contabilidad, ¿se pueden
+                                                separar los gastos del negocio de lo
+f7a             byte    %11.0g     sn_val     f7a. En su trabajo principal, ¿es miembro de un
+                                                sindicato
+f7b             byte    %11.0g     sn_val     f7b. En su trabajo principal, ¿es miembro de una
+                                                asociación de funcionarios
+f7c             byte    %11.0g     sn_val     f7c. En su trabajo principal, ¿es miembro de una
+                                                asociación gremial
+f7d             byte    %11.0g     sn_val     f7d. En su trabajo principal, ¿es miembro de un
+                                                colegio profesional
+f7e             byte    %11.0g     sn_val     f7e. En su trabajo principal, ¿es miembro de otro
+                                                tipo de organización
 b14_rev4cl_ca~s int     %66.0g     caenes_val
-                                              b14. Rama de actividad económica de empresa donde trabaja según CAENES
-b15_1           byte    %19.0g     b15_val    b15_1. En todo el país, ¿cuántas personas trabajan en esa empresa, negocio, inst
+                                              b14. Rama de actividad económica de empresa donde
+                                                trabaja según CAENES
+b15_1           byte    %19.0g     b15_val    b15_1. En todo el país, ¿cuántas personas
+                                                trabajan en esa empresa, negocio, inst
 b15_2           byte    %11.0g     nsnr_val   b15_2. Número exacto, hasta 10 personas
-b16             byte    %78.0g     b16_val    b16. En la semana que terminó el domingo pasado, ¿dónde realizo principalmente s
+b16             byte    %78.0g     b16_val    b16. En la semana que terminó el domingo pasado,
+                                                ¿dónde realizo principalmente s
 b16_otro        str80   %-9s                  Especifica b16 = En otros lugares
-b17_mes         byte    %11.0g     mes_val    b17. ¿Y desde cuando trabaja para ese empleador, en ese negocio o actividad por
-b17_ano         int     %11.0g     nsnr_val   b17. ¿Y desde cuando trabaja para ese empleador, en ese negocio o actividad por
-b18_codigo      long    %44.0g     b18        b18. ¿En qué comuna se ubica la empresa, negocio, institución o actividad por cu
+b17_mes         byte    %11.0g     mes_val    b17. ¿Y desde cuando trabaja para ese empleador,
+                                                en ese negocio o actividad por
+b17_ano         int     %11.0g     nsnr_val   b17. ¿Y desde cuando trabaja para ese empleador,
+                                                en ese negocio o actividad por
+b18_codigo      long    %44.0g     b18        b18. ¿En qué comuna se ubica la empresa, negocio,
+                                                institución o actividad por cu
 b18_region      byte    %18.0g     region_val
-                                              b18. ¿En qué región se ubica la empresa, negocio, institución o actividad por cu
+                                              b18. ¿En qué región se ubica la empresa, negocio,
+                                                institución o actividad por cu
 b18_varias      byte    %21.0g     b18_val    b18. Realizó su trabajo en más de una comuna
 ocup_honorarios byte    %21.0g     honorarios_val
-                                              e1. Por el trabajo realizado, ¿entregó una boleta de honorarios?
-plataformas_d~s byte    %11.0g     snna_val   f2. ¿Su trabajo lo realiza a través de una aplicación móvil o plataforma Web?
-pd_especifique  str38   %-9s                  f2. Especifica plataforma digital en actividad principal
-b19             byte    %11.0g     sn_val     b19. Durante la semana pasada, ademas del trabajo descrito, ¿tuvo algún otro emp
-dependencia_s~a byte    %11.0g     sn_val     g2. Ese otro trabajo, ¿lo hacía para su propia empresa, negocio o actividad por
-sda_pd          byte    %11.0g     sn_val     g4. ¿Este segundo trabajo lo realizó a través de una aplicación móvil o platafor
-sda_pd_especi~e str39   %-9s                  g4. Especifica plataforma digital en actividad secundaria
+                                              e1. Por el trabajo realizado, ¿entregó una boleta
+                                                de honorarios?
+plataformas_d~s byte    %11.0g     snna_val   f2. ¿Su trabajo lo realiza a través de una
+                                                aplicación móvil o plataforma Web?
+pd_especifique  str38   %-9s                  f2. Especifica plataforma digital en actividad
+                                                principal
+b19             byte    %11.0g     sn_val     b19. Durante la semana pasada, ademas del trabajo
+                                                descrito, ¿tuvo algún otro emp
+dependencia_s~a byte    %11.0g     sn_val     g2. Ese otro trabajo, ¿lo hacía para su propia
+                                                empresa, negocio o actividad por
+sda_pd          byte    %11.0g     sn_val     g4. ¿Este segundo trabajo lo realizó a través de
+                                                una aplicación móvil o platafor
+sda_pd_especi~e str39   %-9s                  g4. Especifica plataforma digital en actividad
+                                                secundaria
 turno           byte    %11.0g     sn_val     h1. ¿Trabaja por sistema de turno?
-turno_d         int     %11.0g     nsnr_val   h2. Actividad principal: Días trabajados habitualmente en el turno
-turno_de        int     %11.0g     nsnr_val   h2. Actividad principal: Días de descanso habituales en el turno
-turno_h         int     %11.0g     nsnr_val   h2. Actividad principal: Horas diarias trabajadas habitualmente en el turno
+turno_d         int     %11.0g     nsnr_val   h2. Actividad principal: Días trabajados
+                                                habitualmente en el turno
+turno_de        int     %11.0g     nsnr_val   h2. Actividad principal: Días de descanso
+                                                habituales en el turno
+turno_h         int     %11.0g     nsnr_val   h2. Actividad principal: Horas diarias trabajadas
+                                                habitualmente en el turno
 turno_t         int     %11.0g     nsnr_val4
-                                              h2. Actividad principal: Total horas trabajadas habitualmente en el turno
-c2_1_1          int     %11.0g     nsnr_val   c2_1. Actividad principal: Horas diarias trabajadas habitualmente
-c2_1_2          int     %11.0g     nsnr_val   c2_1. Actividad principal: Días a la semana trabajados habitualmente
-c2_1_3          int     %11.0g     nsnr_val   c2_1. Actividad principal: Total horas semanales trabajadas habitualmente
-c2_2_1          int     %11.0g     nsnr_val   c2_2. Actividad secundaria: Horas diarias trabajadas habitualmente
-c2_2_2          int     %11.0g     nsnr_val   c2_2. Actividad secundaria: Días a la semana trabajados habitualmente
-c2_2_3          int     %11.0g     nsnr_val   c2_2. Actividad secundaria: Total horas semanales trabajadas habitualmente
-c3_1            int     %11.0g     nsnr_val   c3. Actividad principal: Horas diarias contratadas o acordadas
-c3_2            int     %11.0g     nsnr_val   c3. Actividad principal: Días a la semana contratados o acordados
-c3_3            int     %11.0g     nsnr_val   c3. Actividad principal: Total horas semanales contratadas o acordadas
-turno_cont_d    int     %11.0g     nsnr_val   h4b. Actividad principal: Días contratados o acordados en el turno
-turno_cont_de   int     %11.0g     nsnr_val   h4b. Actividad principal: Días de descanso contratados o acordados en el turno
-turno_cont_h    int     %11.0g     nsnr_val   h4b. Actividad principal: Horas diarias contratadas o acordadas en el turno
+                                              h2. Actividad principal: Total horas trabajadas
+                                                habitualmente en el turno
+c2_1_1          int     %11.0g     nsnr_val   c2_1. Actividad principal: Horas diarias
+                                                trabajadas habitualmente
+c2_1_2          int     %11.0g     nsnr_val   c2_1. Actividad principal: Días a la semana
+                                                trabajados habitualmente
+c2_1_3          int     %11.0g     nsnr_val   c2_1. Actividad principal: Total horas semanales
+                                                trabajadas habitualmente
+c2_2_1          int     %11.0g     nsnr_val   c2_2. Actividad secundaria: Horas diarias
+                                                trabajadas habitualmente
+c2_2_2          int     %11.0g     nsnr_val   c2_2. Actividad secundaria: Días a la semana
+                                                trabajados habitualmente
+c2_2_3          int     %11.0g     nsnr_val   c2_2. Actividad secundaria: Total horas semanales
+                                                trabajadas habitualmente
+c3_1            int     %11.0g     nsnr_val   c3. Actividad principal: Horas diarias
+                                                contratadas o acordadas
+c3_2            int     %11.0g     nsnr_val   c3. Actividad principal: Días a la semana
+                                                contratados o acordados
+c3_3            int     %11.0g     nsnr_val   c3. Actividad principal: Total horas semanales
+                                                contratadas o acordadas
+turno_cont_d    int     %11.0g     nsnr_val   h4b. Actividad principal: Días contratados o
+                                                acordados en el turno
+turno_cont_de   int     %11.0g     nsnr_val   h4b. Actividad principal: Días de descanso
+                                                contratados o acordados en el turno
+turno_cont_h    int     %11.0g     nsnr_val   h4b. Actividad principal: Horas diarias
+                                                contratadas o acordadas en el turno
 turno_cont_t    int     %11.0g     nsnr_val4
-                                              h4b. Actividad principal: Total horas contratadas o acordadas en el turno
-c4              byte    %11.0g     sn_val     c4. ¿Le pagan habitualmente las horas extras en su actividad principal?
-c5              byte    %11.0g     sn_val     c5. La semana pasada, ¿trabajó más horas que las habituales en su actividad prin
-c6              int     %11.0g     nsnr_val   c6. ¿Cuántas horas más de las habituales trabajó la semana pasada?
-c7              byte    %11.0g     sn_val     c7. La semana pasada, ¿trabajó menos horas que las habituales en su actividad pr
-c8              int     %11.0g     nsnr_val   c8. ¿Cuántas horas menos de las habituales trabajó la semana pasada?
-c9              byte    %82.0g     c9_val     c9. ¿Por qué razón trabajó un número de horas diferente a lo habitual durante la
-c9_otro         str94   %-9s                  c9. Especifica c9 = Otras razones de un número de horas diferente a lo habitual
-adicionales_h   int     %11.0g     nsnr_val   h15. Horas diarias adicionales a la semana que podría trabajar habitualmente en
-adicionales_d   int     %11.0g     nsnr_val   h15. Días adicionales a la semana que podría trabajar habitualmente en su activi
-adicionales_t   int     %11.0g     nsnr_val   h15. Total horas adicionales a la semana que podría trabajar habitualmente en su
-c10             byte    %11.0g     sn_val     c10. Si de usted dependiera, ¿trabajaría habitualmente más horas de las que trab
-c11             byte    %29.0g     c11_val    c11. Si se diera la posibilidad, ¿estaría disponible para trabajar más horas a l
-c12             byte    %68.0g     c12_val    c12. ¿Cuál es la razón por la que no trabaja más horas?
-e2              byte    %11.0g     sn_val     e2. En las cuatro últimas semanas, hasta el domingo de la semana pasada, ¿ha tra
-e3_1            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Envió currículum a empresas o instituciones
-e3_2            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Consultó directamente con empleadores
-e3_3            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Pidió a conocidos o familiares que le recomen
-e3_4            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Revisó y contestó anuncios (diarios, internet
-e3_5            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Se inscribió o revisó los anuncios en la Ofic
-e3_6            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Realizó gestiones para establecerse por su cu
-e3_7            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Estuvo buscando clientes o pedidos
-e3_8            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Puso anuncios (diarios, internet, radios, rev
-e3_9            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Participó en una prueba o entrevista para con
-e3_10           byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Consultó con agencias de empleo
-e3_11           byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Actualizó su currículum publicado en Internet
+                                              h4b. Actividad principal: Total horas contratadas
+                                                o acordadas en el turno
+c4              byte    %11.0g     sn_val     c4. ¿Le pagan habitualmente las horas extras en
+                                                su actividad principal?
+c5              byte    %11.0g     sn_val     c5. La semana pasada, ¿trabajó más horas que las
+                                                habituales en su actividad prin
+c6              int     %11.0g     nsnr_val   c6. ¿Cuántas horas más de las habituales trabajó
+                                                la semana pasada?
+c7              byte    %11.0g     sn_val     c7. La semana pasada, ¿trabajó menos horas que
+                                                las habituales en su actividad pr
+c8              int     %11.0g     nsnr_val   c8. ¿Cuántas horas menos de las habituales
+                                                trabajó la semana pasada?
+c9              byte    %82.0g     c9_val     c9. ¿Por qué razón trabajó un número de horas
+                                                diferente a lo habitual durante la
+c9_otro         str94   %-9s                  c9. Especifica c9 = Otras razones de un número de
+                                                horas diferente a lo habitual
+adicionales_h   int     %11.0g     nsnr_val   h15. Horas diarias adicionales a la semana que
+                                                podría trabajar habitualmente en
+adicionales_d   int     %11.0g     nsnr_val   h15. Días adicionales a la semana que podría
+                                                trabajar habitualmente en su activi
+adicionales_t   int     %11.0g     nsnr_val   h15. Total horas adicionales a la semana que
+                                                podría trabajar habitualmente en su
+c10             byte    %11.0g     sn_val     c10. Si de usted dependiera, ¿trabajaría
+                                                habitualmente más horas de las que trab
+c11             byte    %29.0g     c11_val    c11. Si se diera la posibilidad, ¿estaría
+                                                disponible para trabajar más horas a l
+c12             byte    %68.0g     c12_val    c12. ¿Cuál es la razón por la que no trabaja más
+                                                horas?
+e2              byte    %11.0g     sn_val     e2. En las cuatro últimas semanas, hasta el
+                                                domingo de la semana pasada, ¿ha tra
+e3_1            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Envió
+                                                currículum a empresas o instituciones
+e3_2            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Consultó
+                                                directamente con empleadores
+e3_3            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Pidió a
+                                                conocidos o familiares que le recomen
+e3_4            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Revisó y
+                                                contestó anuncios (diarios, internet
+e3_5            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Se inscribió o
+                                                revisó los anuncios en la Ofic
+e3_6            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Realizó
+                                                gestiones para establecerse por su cu
+e3_7            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Estuvo
+                                                buscando clientes o pedidos
+e3_8            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Puso anuncios
+                                                (diarios, internet, radios, rev
+e3_9            byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Participó en
+                                                una prueba o entrevista para con
+e3_10           byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Consultó con
+                                                agencias de empleo
+e3_11           byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Actualizó su
+                                                currículum publicado en Internet
 e3_12           byte    %11.0g     sn_val     e3. Gestión de búsqueda de empleo: Nada
-e3_total        byte    %10.0g                e3_total. Número de gestiones realizadas para buscar empleo
-e4              byte    %46.0g     e4_val     e4. ¿Cuál es el motivo principal por el cual está buscando otro trabajo?
-e5              byte    %43.0g     e5_val     e5. Hasta el domingo de la semana pasada, ¿cuándo fue la última vez que buscó tr
-e5_dia          byte    %11.0g     ns_val     e5. Especifique la fecha de su última búsqueda: Día
-e5_sem          byte    %11.0g     ns_val     e5. Especifique la fecha de su última búsqueda: Semana
-e5_mes          byte    %11.0g     mes_val    e5. Especifique la fecha de su última búsqueda: Mes
-e5_ano          int     %11.0g     nsnr_val   e5. Especifique la fecha de su última búsqueda: Año
-e6_mes          byte    %11.0g     mes_val    e6. ¿Desde cuándo ha estado buscando trabajo? Meses
-e6_ano          int     %11.0g     nsnr_val   e6. ¿Desde cuándo ha estado buscando trabajo? Años
-e7              byte    %16.0g     e7_val     e7. ¿Qué tipo de jornada de trabajo está buscando?
-e9              byte    %88.0g     e9_val     e9. ¿Por qué razón no buscó un empleo o no ha hecho preparativos para iniciar o
+e3_total        byte    %10.0g                e3_total. Número de gestiones realizadas para
+                                                buscar empleo
+e4              byte    %46.0g     e4_val     e4. ¿Cuál es el motivo principal por el cual está
+                                                buscando otro trabajo?
+e5              byte    %43.0g     e5_val     e5. Hasta el domingo de la semana pasada, ¿cuándo
+                                                fue la última vez que buscó tr
+e5_dia          byte    %11.0g     ns_val     e5. Especifique la fecha de su última búsqueda:
+                                                Día
+e5_sem          byte    %11.0g     ns_val     e5. Especifique la fecha de su última búsqueda:
+                                                Semana
+e5_mes          byte    %11.0g     mes_val    e5. Especifique la fecha de su última búsqueda:
+                                                Mes
+e5_ano          int     %11.0g     nsnr_val   e5. Especifique la fecha de su última búsqueda:
+                                                Año
+e6_mes          byte    %11.0g     mes_val    e6. ¿Desde cuándo ha estado buscando trabajo?
+                                                Meses
+e6_ano          int     %11.0g     nsnr_val   e6. ¿Desde cuándo ha estado buscando trabajo?
+                                                Años
+e7              byte    %16.0g     e7_val     e7. ¿Qué tipo de jornada de trabajo está
+                                                buscando?
+e9              byte    %88.0g     e9_val     e9. ¿Por qué razón no buscó un empleo o no ha
+                                                hecho preparativos para iniciar o
 e9_otro         str70   %-9s                  e9. Especifica e9 = Otras razones de no búsqueda
-e10             byte    %11.0g     sn_val     e10. Durante las últimas cuatro semanas: a) ¿Hizo gestiones para iniciar un nego
-deseo_trabajar  byte    %11.0g     sn_val     j10. A pesar de que no buscó trabajo, ¿desea trabajar para generar un ingreso?
-e11             byte    %11.0g     sn_val     e11. Si durante la semana pasada, hubiera encontrado un trabajo, ¿estaría dispon
-e12             byte    %88.0g     e12_val    e12. ¿Por qué motivo no estaría disponible para trabajar?
-e12_otro        str99   %-9s                  e12. Especifica e12 = Otras razones de no disponibilidad
-e13             byte    %11.0g     sn_val     e13. ¿Ha tenido anteriormente algún empleo o alguna actividad por cuenta propia
-e21_mes         byte    %11.0g     mes_val    e21. Y, hasta cuándo trabajó en esa ocupación o actividad: Mes
-e21_ano         int     %11.0g     nsnr_val   e21. Y, hasta cuándo trabajó en esa ocupación o actividad: Año
-e21_tramo       byte    %33.0g     e21_val    e21. Tramos desde hasta cuando trabajó en esa ocupación o actividad
-e22             byte    %82.0g     e22_val    e22. ¿Por qué razón ya no tiene ese empleo, negocio o actividad por cuenta propi
+e10             byte    %11.0g     sn_val     e10. Durante las últimas cuatro semanas: a) ¿Hizo
+                                                gestiones para iniciar un nego
+deseo_trabajar  byte    %11.0g     sn_val     j10. A pesar de que no buscó trabajo, ¿desea
+                                                trabajar para generar un ingreso?
+e11             byte    %11.0g     sn_val     e11. Si durante la semana pasada, hubiera
+                                                encontrado un trabajo, ¿estaría dispon
+e12             byte    %88.0g     e12_val    e12. ¿Por qué motivo no estaría disponible para
+                                                trabajar?
+e12_otro        str99   %-9s                  e12. Especifica e12 = Otras razones de no
+                                                disponibilidad
+e13             byte    %11.0g     sn_val     e13. ¿Ha tenido anteriormente algún empleo o
+                                                alguna actividad por cuenta propia
+e21_mes         byte    %11.0g     mes_val    e21. Y, hasta cuándo trabajó en esa ocupación o
+                                                actividad: Mes
+e21_ano         int     %11.0g     nsnr_val   e21. Y, hasta cuándo trabajó en esa ocupación o
+                                                actividad: Año
+e21_tramo       byte    %33.0g     e21_val    e21. Tramos desde hasta cuando trabajó en esa
+                                                ocupación o actividad
+e22             byte    %82.0g     e22_val    e22. ¿Por qué razón ya no tiene ese empleo,
+                                                negocio o actividad por cuenta propi
 e23             byte    %65.0g     e23_val    e23. ¿Cuál fue el motivo de su despido?
 e23_otro        str100  %-9s                  Especifica e23 = Otra razón de despido
 e24             byte    %55.0g     e24_val    e24. ¿Cuál fue el motivo de su renuncia?
@@ -201,7 +336,8 @@ e24_otro        str98   %-9s                  Especifica e24 = Otra razón de re
 activ           byte    %29.0g     activ_val
                                               Condición de actividad
 obe             byte    %36.0g     obe_val    Persona ocupada que buscó un empleo
-tpi             byte    %68.0g     tpi_val    Persona que trabajó de manera involuntaria a tiempo parcial
+tpi             byte    %68.0g     tpi_val    Persona que trabajó de manera involuntaria a
+                                                tiempo parcial
 id              byte    %40.0g     id_val     Persona no ocupada iniciadora disponible
 ftp             byte    %47.0g     ftp_val    Fuerza de trabajo potencial
 cae_general     byte    %51.0g     cae_general_val
@@ -211,250 +347,764 @@ cae_especifico  byte    %44.0g     cae_especifico_val
 categoria_ocu~n byte    %47.0g     cise_val   Categoría en la ocupación (CISE-93)
 habituales      int     %11.0g     nsnr_val   Horas habituales semanales de trabajo
 efectivas       int     %11.0g     nsnr_val   Horas efectivas semanales trabajadas
-ocup_form       byte    %18.0g     form_val   Personas ocupadas según formalidad de la ocupación
+ocup_form       byte    %18.0g     form_val   Personas ocupadas según formalidad de la
+                                                ocupación
 r_p_rev4cl_ca~s int     %66.0g     caenes_val
-                                              Rama de actividad económica de la empresa o institución que le paga el sueldo o
+                                              Rama de actividad económica de la empresa o
+                                                institución que le paga el sueldo o
 sector          byte    %24.0g     sector_val
                                               Personas ocupadas según sector
-asocia          byte    %11.0g     sn_val     Participante en al menos una organización de trabajadores
-fact_cal        double  %10.0g                Factor de expansión trimestral, proyecciones de población Censo 2017
---------------------------------------------------------------------------------------------------------------------------------
+asocia          byte    %11.0g     sn_val     Participante en al menos una organización de
+                                                trabajadores
+fact_cal        double  %10.0g                Factor de expansión trimestral, proyecciones de
+                                                población Censo 2017
+-----------------------------------------------------------------------------------------------
 Sorted by: 
 
-. *codebook
-. summarize
-
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-ano_trimes~e |     97,998        2023           0       2023       2023
- mes_central |     97,998          11           0         11         11
-ano_encuesta |     97,998        2023           0       2023       2023
-mes_encuesta |     97,998    10.98869    .8086108         10         12
-      region |     97,998    8.872467     4.09045          1         16
--------------+---------------------------------------------------------
-   provincia |     97,998    90.69833    40.68792         11        163
-       r_p_c |     97,998    9075.019    4070.317       1101      16305
-     estrato |     97,998     9057847     4064807    1100111   1.63e+07
-        tipo |     97,998     1.44603    .8325406          1          3
-conglomerado |          0
--------------+---------------------------------------------------------
-id_identif~n |     97,998    155503.1    16120.43     127719     185685
-       hogar |     97,998    1.005225    .0770199          1          5
-       idrph |     97,998    9.52e+10    2.22e+11     180696   1.00e+12
-   nro_linea |     97,998    2.264577     1.34401          1         14
-        edad |     97,998    40.34969      23.185          0        103
--------------+---------------------------------------------------------
-  tramo_edad |     81,325    6.839447    3.625723          1         12
-        sexo |     97,998    1.523837     .499434          1          2
-  parentesco |     97,998    3.120421    3.785454          1         99
-       curso |     97,998    3.838517     2.90498          0         99
-       nivel |     97,998     8.20029    55.25717          0        902
--------------+---------------------------------------------------------
-termino_ni~l |     97,998    1.453315    1.764668          1         99
-estudia_ac~l |     97,998    1.747546    .9863414          1         99
-        cine |     97,998    9.054419    65.81599          1        999
-est_conyugal |     97,998    2.038705    1.604407          0         99
-   proveedor |     97,998    .3599767    .4799957          0          1
--------------+---------------------------------------------------------
-       orig1 |     97,998    1.977408    3.178079          1         88
-       orig2 |     13,566    2.670352    7.313968          1         88
-       orig3 |          0
-nacionalidad |     97,998    167.1185    99.93485         32        862
-        mig1 |     97,998    1.304772    1.718208          1         99
--------------+---------------------------------------------------------
-    mig2_cod |      7,993     10565.5    7548.745       1101      99999
-    mig3_cod |      1,876    530.2329    348.1243         20        999
-        mig4 |     97,998     1.46804    .5867624          1          3
-    mig5_cod |     36,527    12055.22    15276.45       1101      99999
-    mig6_cod |      4,670    484.5741    343.3959         32        999
--------------+---------------------------------------------------------
-          a1 |     81,325    1.530772    .4990553          1          2
-          a2 |     43,165    1.969605    .1716736          1          2
-          a3 |     39,472    1.011502    .1066294          1          2
-          a4 |        454    1.367841    .4827499          1          2
-          a5 |     41,853    1.936874    .2431918          1          2
--------------+---------------------------------------------------------
-          a6 |      2,642    3.594247    3.118937          1         14
-     a6_otro |          0
-          a7 |        704    2.055398    3.253369          1         88
-          a8 |        657    1.811263    .9440092          1          3
-          b1 |     41,656     6.01426    21.36696          1        999
--------------+---------------------------------------------------------
-          b2 |     41,656    1.770381    .4734379          1          3
-          b3 |        984    2.384146     1.38102          1          4
-          b4 |     10,549    1.871552     .334604          1          2
-          b5 |     30,550     1.85437    .4613119          1          3
-          b6 |      1,350    1.377778    .7261571          1          3
--------------+---------------------------------------------------------
-       b7a_1 |     30,550    4.241211    15.14077          1         99
-       b7a_2 |     30,550    4.218331    15.12434          1         99
-       b7a_3 |     30,550     5.33928    17.57283          1         99
-       b7b_1 |     30,550    4.656105    16.06629          1         99
-       b7b_2 |     30,550    4.484157    15.74386          1         99
--------------+---------------------------------------------------------
-       b7b_3 |     30,550    5.855417    18.72606          1         99
-       b7b_4 |     30,550    10.31735    25.28989          1         99
-          b8 |     30,550    1.411686    4.900346          1         99
-          b9 |     30,550    2.350115    7.457995          1         99
-         b10 |      8,682    3.014167     6.28545          1         99
--------------+---------------------------------------------------------
-   b11_proxy |     41,262     1.40587     3.47264          1         99
-         b12 |     29,397    1.414804    3.930795          1         99
-b13_rev4cl~s |      5,187    12.21284    39.10323          1        999
-          i1 |     29,397    2.855325     12.4167          1         99
-          i2 |     29,397     3.32687    13.98012          1         99
--------------+---------------------------------------------------------
-          i3 |     29,397    13.36218    30.76306          1         99
-        i3_v |     29,397    .0033677     .057935          0          1
-          i4 |     11,106    2.110751    6.472021          1         99
-          i5 |      4,071    2.843773    8.624043          1         99
-          i6 |     11,106    3.686206    7.433629          1         99
--------------+---------------------------------------------------------
-          i7 |      4,086    2.393294    10.14945          1         99
-         f7a |     41,656    2.908993     9.42595          1         99
-         f7b |     41,656    2.518821    6.927724          1         99
-         f7c |     41,656    2.396534    6.029763          1         99
-         f7d |     41,656    2.388347    5.940954          1         99
--------------+---------------------------------------------------------
-         f7e |     41,656    2.405464    6.043307          1         99
-b14_rev4cl~s |     41,656    12.63566    57.37055          1        999
-       b15_1 |     40,503    5.728144     15.1562          1         99
-       b15_2 |     16,282    2.355116    2.256218          1         88
-         b16 |     40,503    3.163914    4.448873          1         99
--------------+---------------------------------------------------------
-    b16_otro |          0
-     b17_mes |     41,656    35.42068    39.50815          1         99
-     b17_ano |     41,656    2060.981    588.1796       1948       9999
-  b18_codigo |     41,656    9061.168    4399.996       1101      99999
-  b18_region |     41,656    8.871735    4.485289          1         99
--------------+---------------------------------------------------------
-  b18_varias |     41,656    1.265868    4.703895          1         99
-ocup_honor~s |     41,656    2.666219     7.26703          1         77
-plataforma~s |     41,656    2.948267    8.730983          1         99
-pd_especif~e |          0
-         b19 |     41,656    2.104643    3.503384          1         99
--------------+---------------------------------------------------------
-dependenci~a |      1,438    1.587622    5.522804          1         99
-      sda_pd |      1,438    2.089013    3.939929          1         88
-sda_pd_esp~e |          0
-       turno |     41,656    2.048132    3.348514          1         99
-     turno_d |      3,265      8.2049    27.04999          1        888
--------------+---------------------------------------------------------
-    turno_de |      3,265     7.00827     27.0685          1        888
-     turno_h |      3,265    12.11884    26.64002          2        888
-     turno_t |      3,265    90.46279    271.5475         10       8888
-      c2_1_1 |     41,656    260.2681    402.8306          1        999
-      c2_1_2 |     41,656     78.0585    243.5576          1        999
--------------+---------------------------------------------------------
-      c2_1_3 |     41,656    42.15729    45.58274          1        999
-      c2_2_1 |      1,438    84.27191    256.8288          1        999
-      c2_2_2 |      1,438    16.41864    110.1858          1        999
-      c2_2_3 |      1,438     16.5146    61.69392          1        888
-        c3_1 |     30,550    339.5142    432.2012          1        999
--------------+---------------------------------------------------------
-        c3_2 |     30,550    103.1032    277.7591          1        999
-        c3_3 |     30,550    44.12907    47.39655          1        999
-turno_cont_d |      3,246    8.784966    35.72748          1        999
-turno_cont~e |      3,246    7.599199    35.76155          1        999
-turno_cont_h |      3,246    12.70641    35.35682          2        999
--------------+---------------------------------------------------------
-turno_cont_t |      3,246    96.28004    358.0525         10       9999
-          c4 |        288    2.736111    10.14871          1         88
-          c5 |     41,656     2.19649    4.456306          1         99
-          c6 |      1,215    21.56708    109.6595          1        999
-          c7 |     40,441    2.082194    4.763795          1         99
--------------+---------------------------------------------------------
-          c8 |      7,033    21.21356    49.30887          1        999
-          c9 |      8,248     4.52146    7.303467          1         99
-     c9_otro |          0
-adicionale~h |      5,364    35.36801    164.0616          1        999
-adicionale~d |      5,364    8.591536    65.09315          1        999
--------------+---------------------------------------------------------
-adicionale~t |      5,364    17.36111    26.37228          1        888
-         c10 |     41,656     3.09456    10.27765          1         99
-         c11 |      5,722    2.317022     9.88657          1         99
-         c12 |      5,722    8.049808    23.76858          1         99
-          e2 |     81,325    2.085779    3.908059          1         99
--------------+---------------------------------------------------------
-        e3_1 |      6,480       .5625    .4961167          0          1
-        e3_2 |      6,480    .3723765    .4834753          0          1
-        e3_3 |      6,480    .4123457    .4922947          0          1
-        e3_4 |      6,480    .4095679     .491792          0          1
-        e3_5 |      6,480    .0765432    .2658858          0          1
--------------+---------------------------------------------------------
-        e3_6 |      6,480    .0188272    .1359248          0          1
-        e3_7 |      6,480    .0234568    .1513608          0          1
-        e3_8 |      6,480    .0185185    .1348273          0          1
-        e3_9 |      6,480    .0319444    .1758658          0          1
-       e3_10 |      6,480    .0072531    .0848622          0          1
--------------+---------------------------------------------------------
-       e3_11 |      6,480    .0384259     .192237          0          1
-       e3_12 |         39           1           0          1          1
-    e3_total |      6,441    1.983698    1.024186          1         10
-          e4 |      2,470    2.156275    3.514114          1         99
-          e5 |      3,971    1.056913    .3481284          1          4
--------------+---------------------------------------------------------
-      e5_dia |      3,971    16.46109    10.83604          1         99
-      e5_sem |      3,971    2.966759    1.856543          1         88
-      e5_mes |      3,971    10.83354    1.064302          1         12
-      e5_ano |      3,971    2022.999    .0925418       2018       2024
-      e6_mes |      3,847    11.19938    16.34521          1         99
--------------+---------------------------------------------------------
-      e6_ano |      3,847     2041.27    385.4054       1970       9999
-          e7 |      6,314    2.125277    5.510181          1         99
-          e9 |     35,822    6.321339    4.216451          1         22
-     e9_otro |          0
-         e10 |        346    1.265896     .442449          1          2
--------------+---------------------------------------------------------
-deseo_trab~r |     34,512    1.904932    3.709751          1         99
-         e11 |     38,359    1.762403    .4256167          1          2
-         e12 |     29,245    5.351958    2.305995          1         13
-    e12_otro |          0
-         e13 |     39,669    1.344728    .6438258          1         88
--------------+---------------------------------------------------------
-     e21_mes |     26,080    58.75851    39.55471          1         99
-     e21_ano |     26,080    2041.337    456.2575       1940       9999
-   e21_tramo |     26,080    2.611465    1.493932          1          5
-         e22 |     26,080    3.335621    5.438434          1         99
-         e23 |      1,989    8.598291    8.036199          1         99
--------------+---------------------------------------------------------
-    e23_otro |          0
-         e24 |      7,225     4.05827     5.14567          1         99
-    e24_otro |          0
-       activ |     81,325    1.928853    .9737741          1          3
-         obe |     41,656    .0592232    .2360447          0          1
--------------+---------------------------------------------------------
-         tpi |     41,656    .0597753    .2370729          0          1
-          id |     35,870    .0054642    .0737189          0          1
-         ftp |     35,870    .1436577    .3507471          0          1
- cae_general |     97,998    3.877855    3.858961          0          9
-cae_especi~o |     97,998    7.243597    8.258819          0         28
--------------+---------------------------------------------------------
-categoria_~n |     97,998    1.252046    1.564073          0          7
-  habituales |     41,656    42.15729    45.58274          1        999
-   efectivas |     41,656    39.22873    46.57584          0        999
-   ocup_form |     41,656     1.31196    .4632991          1          2
-r_p_rev4cl~s |     41,656    12.74143    57.34877          1        999
--------------+---------------------------------------------------------
-      sector |     41,656    1.259074    .5119639          1          3
-      asocia |     41,656    1.847297    .3597054          1          2
-    fact_cal |     97,998     204.167    172.9638   6.186431   5050.127
-
+. **  -----------------------
 . 
-. ** Pregunta 1.4
+. **  ---- Pregunta 1.4 -----
 . keep est_conyugal nivel sexo tramo_edad edad region tipo activ cine ///
 >         obe tpi ftp habituales efectivas fact_cal asocia sector orig1 ///
 >         id_identificacion idrph
 
-. 
+.         
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1
+
 . save "ene-2023-ond_delim.dta", replace
 file ene-2023-ond_delim.dta saved
 
-. ** fin Pregunta 1.4
+. **  -----------------------
+. 
+. **  ---- Pregunta 1.5 -----
+. gen ponderador = round(fact_cal)
+
+. **  -----------------------
+. 
+. 
+. **  ---- Pregunta 1.6 -----
+. gen ocupados = (activ == 1)
+
+. gen ocupados_escalado = ocupados * ponderador
+
+. 
+. global ste sexo tipo est_conyugal
+
+. 
+. foreach x in $ste {
+  2.         preserve
+  3.         collapse (sum) ocupados_escalado, by(`x')
+  4.         * rescatamos el label para el nombre
+.         local lbl: variable label `x'
+  5.         local lbl_lower = substr(strlower("`lbl'"), 1, 14)
+  6.         label variable ocupados_escalado "Total de desocupados por `lbl_lower'"
+  7.         * guardamos el dataset
+.         save ocp_by_`x'.dta, replace
+  8.         restore
+  9. }
+file ocp_by_sexo.dta saved
+file ocp_by_tipo.dta saved
+file ocp_by_est_conyugal.dta saved
+
+. **  -----------------------
+. 
+. 
+. 
+. **  ---- Pregunta 1.7 -----
+. gen desocupados = (activ == 2)
+
+. gen desocupados_escalado = desocupados * ponderador
+
+. 
+. foreach x in $ste {
+  2.         preserve
+  3.         collapse (sum) desocupados_escalado, by(`x')
+  4.         local lbl: variable label `x'
+  5.         local lbl_lower = substr(strlower("`lbl'"), 1, 14)
+  6.         label variable desocupados_escalado "Total de desocupados por `lbl_lower'"
+  7.         merge 1:1 `x' using ocp_by_`x'.dta
+  8.         drop _merge
+  9.         save ocp_by_`x'.dta, replace
+ 10.         restore
+ 11. }
+(label sexo_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 2  (_merge==3)
+    -----------------------------------------
+file ocp_by_sexo.dta saved
+(label tipo_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 2  (_merge==3)
+    -----------------------------------------
+file ocp_by_tipo.dta saved
+(label conyugal_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 9  (_merge==3)
+    -----------------------------------------
+file ocp_by_est_conyugal.dta saved
+
+. **  -----------------------
+. 
+. 
+. 
+. **  ---- Pregunta 1.8 -----
+. gen fuerza_trabajo = ocupados_escalado + desocupados_escalado
+
+. 
+. foreach x in $ste {
+  2.         preserve
+  3.         collapse (sum) fuerza_trabajo, by(`x')
+  4.         local lbl: variable label `x'
+  5.         local lbl_lower = substr(strlower("`lbl'"), 1, 14)
+  6.         label variable fuerza_trabajo "Fuerza de trabajo por `lbl_lower'"
+  7.         merge 1:1 `x' using ocp_by_`x'.dta
+  8.         drop _merge
+  9.         save ocp_by_`x'.dta, replace
+ 10.         restore
+ 11. }
+(label sexo_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 2  (_merge==3)
+    -----------------------------------------
+file ocp_by_sexo.dta saved
+(label tipo_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 2  (_merge==3)
+    -----------------------------------------
+file ocp_by_tipo.dta saved
+(label conyugal_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 9  (_merge==3)
+    -----------------------------------------
+file ocp_by_est_conyugal.dta saved
+
+. **  -----------------------
+. 
+. **  ---- Pregunta 1.9 -----
+. gen mayoresde15 = 1 if edad >= 15
+(16,673 missing values generated)
+
+. replace mayoresde15 = 0 if edad < 15
+(16,673 real changes made)
+
+. 
+. foreach x in $ste {
+  2.         preserve
+  3.         replace mayoresde15 = mayoresde15 * ponderador
+  4.         collapse (sum) mayoresde15, by(`x')
+  5.         local lbl: variable label `x'
+  6.         local lbl_lower = substr(strlower("`lbl'"), 1, 14)
+  7.         label variable mayoresde15 "Pob. en edad de trabajar por `lbl_lower'"
+  8.         merge 1:1 `x' using ocp_by_`x'.dta
+  9.         drop _merge
+ 10.         save ocp_by_`x'.dta, replace
+ 11.         restore
+ 12. }
+(81,325 real changes made)
+(label sexo_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 2  (_merge==3)
+    -----------------------------------------
+file ocp_by_sexo.dta saved
+(81,325 real changes made)
+(label tipo_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 2  (_merge==3)
+    -----------------------------------------
+file ocp_by_tipo.dta saved
+(81,325 real changes made)
+(label conyugal_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 9  (_merge==3)
+    -----------------------------------------
+file ocp_by_est_conyugal.dta saved
+
+. **  ------------------------
+. 
+. **  ---- Pregunta 1.10 -----
+. foreach x in $ste {
+  2.         preserve
+  3.         use ocp_by_`x'.dta, clear
+  4.         gen tasa_de_particip = round(100*(fuerza_trabajo/mayoresde15),0.01)
+  5.         label variable tasa_de_particip "Tasa de participación"
+  6.         save ocp_by_`x'.dta, replace
+  7.         restore
+  8. }
+file ocp_by_sexo.dta saved
+file ocp_by_tipo.dta saved
+(1 missing value generated)
+file ocp_by_est_conyugal.dta saved
+
+. **  ------------------------
+. 
+. **  ---- Pregunta 1.11 -----
+. gen tasa_de_particip = round(100*(fuerza_trabajo/(mayoresde15*ponderador)),0.01) ///
+>         if edad >= 15
+(16,673 missing values generated)
+
+.         
+. sum tasa_de_particip
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+tasa_de_pa~p |     81,325    55.89302    49.65181          0        100
+
+. *asdoc
+. 
+. foreach x in $ste {
+  2.         preserve
+  3.         use ocp_by_`x'.dta, clear
+  4.         
+.         *eliminamos "no sabe", "no aplica", "no responde"
+.         drop if `x' == 88 | `x' == 0 | `x' == 99
+  5.         
+.         * Acortamos los labels de la var. categórica
+.         decode `x', generate(new_var)
+  6.         drop `x'
+  7.         rename new_var `x'
+  8.         replace `x' = substr(`x', 1, 11)
+  9. 
+.         *Graficamos
+.         local y_label : variable label tasa_de_particip
+ 10.         local lbl: variable label `x'
+ 11.         local lbl_lower = strlower("`lbl'")
+ 12.         quietly graph bar tasa_de_particip, over(`x', label(angle(45))) ///
+>                 ytitle("`y_label'") title("Tasa de participación (%)") ///
+>                 subtitle("Por `lbl_lower'") xsize(2) ysize(2) ///
+>                 graphregion(margin(large)) scheme(stcolor) style(verdana)
+ 13.         *Exportamos el gráfico
+.         quietly graph export `x'_tasa_de_particip.png, replace
+ 14.         
+.         restore
+ 15. }
+(0 observations deleted)
+(0 real changes made)
+(0 observations deleted)
+(0 real changes made)
+(3 observations deleted)
+(2 real changes made)
+
+. **  ------------------------
+. 
+. **  ---- Pregunta 1.12 -----
+. preserve
+
+. 
+. *preparamos el collapse
+. replace mayoresde15 = mayoresde15*ponderador
+(81,325 real changes made)
+
+. drop ponderador
+
+. keep if edad >= 15
+(16,673 observations deleted)
+
+. 
+. *Hacemos el collapse
+. collapse (sum) desocupados_escalado mayoresde15, by(region)
+
+. gen tasa_de_desemp = round(100*(desocupados_escalado/(mayoresde15)),0.01)
+
+. gsort -tasa_de_desemp
+
+. keep in 1/5
+(11 observations deleted)
+
+. 
+. *Graficamos
+. quietly graph hbar tasa_de_desemp, over(region, sort(tasa_de_desemp) descending) ///
+>         ytitle("Tasa de desempleo (%)") title("Tasa de desempleo (%)") ///
+>         subtitle("Por región") xsize(2) ysize(2) ///
+>         graphregion(margin(large)) scheme(stcolor) style(verdana)
+
+. *Exportamos el gráfico
+. quietly graph export tasa_de_desemp_region.png, replace
+
+. 
+. restore 
+
+. **  ------------------------
+. 
+. **  ---- Pregunta 1.13 -----
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
+
+. 
+. use "ene-2023-ond_delim.dta", clear
+
+. ds
+region        edad          cine          obe           efectivas
+tipo          tramo_edad    est_conyugal  tpi           sector
+id_identif~n  sexo          orig1         ftp           asocia
+idrph         nivel         activ         habituales    fact_cal
+
+. local vars1 `r(varlist)'
+
+. 
+. use "esi-2023---personas.dta", clear
+
+. 
+. merge 1:1 _n using "ene-2023-ond_delim.dta"
+(label sn_val already defined)
+(label nsnr_val already defined)
+(label tipo_val already defined)
+(label region_val already defined)
+(label sexo_val already defined)
+(label conyugal_val already defined)
+(label nivel_val already defined)
+(label cine_val already defined)
+(label activ_val already defined)
+(label edad_val already defined)
+(label sector_val already defined)
+(label obe_val already defined)
+(label tpi_val already defined)
+(label ftp_val already defined)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            97,998  (_merge==3)
+    -----------------------------------------
+
+. 
+. keep `vars1' ing_t_t ing_ot ing_t_d ing_t_p fact_cal_esi _merge
+
+. 
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1
+
+. 
+. asdoc tab _merge, label title(Merge Results) fhc(\b) save(merget1.doc) replace
+
+   Matching result from |
+                  merge |      Freq.     Percent        Cum.
+------------------------+-----------------------------------
+            Matched (3) |     97,998      100.00      100.00
+------------------------+-----------------------------------
+                  Total |     97,998      100.00
+Click to Open File:  merget1.doc
+
+. drop _merge
+
+. 
+. save "tarea1 parte1 matias munoz.dta", replace
+file tarea1 parte1 matias munoz.dta saved
+
+.         
+. **  ------------------------
+. 
+. **  ---- Pregunta 1.14 -----
+. * Yo nací un 2 de abril
+. * 2 + 20 = 22
+. * eliminamos los que terminan en 22, 44, y 88
+. 
+. gen desc_idrph = 1 if mod(idrph, 100) == 22 | mod(idrph, 100) == 44 | ///
+>         mod(idrph, 100) == 88
+(95,013 missing values generated)
+
+. drop if desc_idrph == 1
+(2,985 observations deleted)
+
+. **  ------------------------
+. 
+. **  ---- Pregunta 1.15 -----
+. gen ponderador = round(fact_cal_esi)
+
+. 
+. preserve
+
+. drop if sector == 3
+(1,418 observations deleted)
+
+. graph bar (mean) ing_t_t, over(sector) ///
+>         ytitle("Ingreso promedio") title("Ingreso promedio") ///
+>         subtitle("Por sector") xsize(2) ysize(2) ///
+>         graphregion(margin(large)) scheme(stcolor) style(verdana)
+
+. quietly graph export ing_por_sector.png, replace
+
+. restore
+
+. **  ------------------------
+. 
+. **  ---- Pregunta 1.16 -----
+. hist ing_t_t, bin(100) color(gs12) kdensity
+(bin=100, start=0, width=602466.13)
+
+. graph export "hist1.png", replace
+file /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1/hist1.png saved as PNG
+    format
+
+. 
+. preserve
+
+. drop if ing_t_t == 0
+(54,629 observations deleted)
+
+. hist ing_t_t, bin(100) color(gs12) kdensity
+(bin=100, start=2000, width=602446.13)
+
+. graph export "hist2.png", replace
+file /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1/hist2.png saved as PNG
+    format
+
+. 
+. drop if ing_t_t < 5000000
+(40,191 observations deleted)
+
+. hist ing_t_t, bin(100) color(gs12) kdensity
+(bin=100, start=5000000, width=552466.13)
+
+. graph export "hist3.png", replace
+file /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1/hist3.png saved as PNG
+    format
+
+. 
+. restore
+
+. 
+. sum ing_t_t
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+     ing_t_t |     95,013    303827.3    657857.9          0   6.02e+07
+
+. **  ------------------------
+. 
+. 
+. **  ---- Pregunta 1.17 -----
+. gen ed_uni = 1 if cine >= 7
+(78,608 missing values generated)
+
+. replace ed_uni = 0 if ed_uni != 1
+(78,608 real changes made)
+
+. **  ------------------------
+. 
+. **  ---- Pregunta 1.18 -----
+. gen log_ingr = log(ing_t_t * ponderador)
+(54,629 missing values generated)
+
+. gen sq_edad = edad*edad
+
+. 
+. * ----
+. *local controles_total sq_edad sexo region est_conyugal orig1 tipo habituales ///
+> *       sector asocia
+. 
+. *local controles edad
+. *quietly reg ed_uni log_ing edad
+. *estimates store model_edad
+. *local modelos model_edad
+. 
+. *foreach x in `controles_total' {
+. *       local controles `controles' `x'
+. *       quietly reg ed_uni log_ingr `controles'
+. *       estimates store model_`x'
+. *       local modelos `modelos' model_`x'
+. *}
+. 
+. *esttab `modelos' using regression_results.rtf, ///
+> *    se star(* 0.1 ** 0.05 *** 0.01) label ///
+> *    title("Tabla #: Distintos modelos para predecir completación de educacion universitaria"
+> ) ///
+> *       replace
+. * ----
+. 
+. 
+. local controles_total sq_edad sexo region est_conyugal orig1 tipo habituales ///
+>         sector asocia
+
+. 
+. local controles edad
+
+. reg ed_uni log_ingr edad
+
+      Source |       SS           df       MS      Number of obs   =    40,384
+-------------+----------------------------------   F(2, 40381)     =   3652.76
+       Model |  1180.35124         2  590.175618   Prob > F        =    0.0000
+    Residual |  6524.35694    40,381   .16156997   R-squared       =    0.1532
+-------------+----------------------------------   Adj R-squared   =    0.1532
+       Total |  7704.70818    40,383  .190790882   Root MSE        =    .40196
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |     .11868   .0015703    75.58   0.000     .1156021    .1217579
+        edad |  -.0038641   .0001435   -26.93   0.000    -.0041453   -.0035828
+       _cons |  -1.731935   .0303873   -57.00   0.000    -1.791494   -1.672375
+------------------------------------------------------------------------------
+
+. outreg2 using REG_p1_18.doc, replace word
+REG_p1_18.doc
+dir : seeout
+
+.         
+. foreach x in `controles_total' {
+  2.         local controles `controles' `x'
+  3.         reg ed_uni log_ingr `controles'
+  4.         outreg2 using REG_p1_18.doc, append word
+  5. }
+
+      Source |       SS           df       MS      Number of obs   =    40,384
+-------------+----------------------------------   F(3, 40380)     =   2444.50
+       Model |  1184.20271         3  394.734237   Prob > F        =    0.0000
+    Residual |  6520.50547    40,380   .16147859   R-squared       =    0.1537
+-------------+----------------------------------   Adj R-squared   =    0.1536
+       Total |  7704.70818    40,383  .190790882   Root MSE        =    .40184
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1202586   .0016028    75.03   0.000     .1171171    .1234002
+        edad |  -.0080642   .0008719    -9.25   0.000    -.0097732   -.0063553
+     sq_edad |    .000046   9.41e-06     4.88   0.000     .0000275    .0000644
+       _cons |  -1.673992   .0326133   -51.33   0.000    -1.737915   -1.610069
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+      Source |       SS           df       MS      Number of obs   =    40,384
+-------------+----------------------------------   F(4, 40379)     =   1977.01
+       Model |  1261.81116         4   315.45279   Prob > F        =    0.0000
+    Residual |  6442.89702    40,379  .159560589   R-squared       =    0.1638
+-------------+----------------------------------   Adj R-squared   =    0.1637
+       Total |  7704.70818    40,383  .190790882   Root MSE        =    .39945
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1263016   .0016167    78.12   0.000     .1231329    .1294703
+        edad |  -.0096089   .0008695   -11.05   0.000    -.0113132   -.0079045
+     sq_edad |   .0000659   9.40e-06     7.01   0.000     .0000475    .0000844
+        sexo |   .0898506   .0040741    22.05   0.000     .0818653    .0978359
+       _cons |  -1.888713   .0338495   -55.80   0.000    -1.955059   -1.822368
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+      Source |       SS           df       MS      Number of obs   =    40,384
+-------------+----------------------------------   F(5, 40378)     =   1581.61
+       Model |  1261.83577         5  252.367155   Prob > F        =    0.0000
+    Residual |   6442.8724    40,378  .159563931   R-squared       =    0.1638
+-------------+----------------------------------   Adj R-squared   =    0.1637
+       Total |  7704.70818    40,383  .190790882   Root MSE        =    .39945
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1262279   .0016275    77.56   0.000     .1230378    .1294179
+        edad |  -.0096027   .0008697   -11.04   0.000    -.0113073   -.0078981
+     sq_edad |   .0000659   9.40e-06     7.00   0.000     .0000474    .0000843
+        sexo |   .0898096   .0040755    22.04   0.000     .0818216    .0977975
+      region |   .0001919   .0004887     0.39   0.695     -.000766    .0011499
+       _cons |  -1.889127   .0338662   -55.78   0.000    -1.955505   -1.822748
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+      Source |       SS           df       MS      Number of obs   =    40,384
+-------------+----------------------------------   F(6, 40377)     =   1318.85
+       Model |  1262.53704         6   210.42284   Prob > F        =    0.0000
+    Residual |  6442.17114    40,377  .159550515   R-squared       =    0.1639
+-------------+----------------------------------   Adj R-squared   =    0.1637
+       Total |  7704.70818    40,383  .190790882   Root MSE        =    .39944
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1260513   .0016297    77.35   0.000     .1228572    .1292455
+        edad |  -.0097196   .0008714   -11.15   0.000    -.0114276   -.0080115
+     sq_edad |    .000067   9.42e-06     7.11   0.000     .0000485    .0000854
+        sexo |    .091008   .0041152    22.12   0.000     .0829421    .0990739
+      region |   .0001914   .0004887     0.39   0.695    -.0007665    .0011493
+est_conyugal |  -.0027475   .0013105    -2.10   0.036    -.0053161   -.0001788
+       _cons |  -1.878227   .0342615   -54.82   0.000     -1.94538   -1.811073
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+      Source |       SS           df       MS      Number of obs   =    40,384
+-------------+----------------------------------   F(7, 40376)     =   1130.47
+       Model |  1262.59359         7  180.370513   Prob > F        =    0.0000
+    Residual |  6442.11459    40,376  .159553066   R-squared       =    0.1639
+-------------+----------------------------------   Adj R-squared   =    0.1637
+       Total |  7704.70818    40,383  .190790882   Root MSE        =    .39944
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1260473   .0016297    77.34   0.000     .1228531    .1292415
+        edad |  -.0097198   .0008714   -11.15   0.000    -.0114279   -.0080118
+     sq_edad |   .0000669   9.42e-06     7.11   0.000     .0000485    .0000854
+        sexo |   .0910276   .0041153    22.12   0.000     .0829614    .0990938
+      region |   .0001936   .0004887     0.40   0.692    -.0007644    .0011515
+est_conyugal |  -.0027444   .0013105    -2.09   0.036    -.0053131   -.0001757
+       orig1 |   .0003773   .0006338     0.60   0.552     -.000865    .0016196
+       _cons |  -1.878929   .0342821   -54.81   0.000    -1.946123   -1.811735
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+      Source |       SS           df       MS      Number of obs   =    40,384
+-------------+----------------------------------   F(8, 40375)     =    989.52
+       Model |  1263.00087         8  157.875109   Prob > F        =    0.0000
+    Residual |  6441.70731    40,375   .15954693   R-squared       =    0.1639
+-------------+----------------------------------   Adj R-squared   =    0.1638
+       Total |  7704.70818    40,383  .190790882   Root MSE        =    .39943
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1269765   .0017303    73.38   0.000     .1235851     .130368
+        edad |  -.0097917   .0008726   -11.22   0.000     -.011502   -.0080814
+     sq_edad |   .0000677   9.43e-06     7.18   0.000     .0000492    .0000862
+        sexo |   .0918485   .0041472    22.15   0.000     .0837199    .0999772
+      region |   .0001922   .0004887     0.39   0.694    -.0007657    .0011501
+est_conyugal |  -.0026363   .0013123    -2.01   0.045    -.0052084   -.0000643
+       orig1 |   .0003688   .0006338     0.58   0.561    -.0008735    .0016111
+        tipo |   .0041815   .0026172     1.60   0.110    -.0009482    .0093112
+       _cons |  -1.901578   .0370968   -51.26   0.000    -1.974289   -1.828868
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+      Source |       SS           df       MS      Number of obs   =    38,339
+-------------+----------------------------------   F(9, 38329)     =    868.60
+       Model |  1255.74553         9  139.527281   Prob > F        =    0.0000
+    Residual |  6156.94077    38,329  .160634005   R-squared       =    0.1694
+-------------+----------------------------------   Adj R-squared   =    0.1692
+       Total |   7412.6863    38,338  .193350887   Root MSE        =    .40079
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1358321   .0018412    73.77   0.000     .1322233     .139441
+        edad |  -.0092315    .000912   -10.12   0.000    -.0110191   -.0074439
+     sq_edad |   .0000627   9.84e-06     6.37   0.000     .0000434     .000082
+        sexo |   .0928773   .0042747    21.73   0.000     .0844988    .1012558
+      region |  -9.39e-06   .0005024    -0.02   0.985    -.0009942    .0009754
+est_conyugal |  -.0030161   .0013393    -2.25   0.024    -.0056412   -.0003909
+       orig1 |   .0001613   .0006422     0.25   0.802    -.0010975    .0014201
+        tipo |    .007854   .0027117     2.90   0.004      .002539    .0131689
+  habituales |  -.0003026   .0000455    -6.65   0.000    -.0003917   -.0002134
+       _cons |  -2.070201   .0394365   -52.49   0.000    -2.147498   -1.992904
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+      Source |       SS           df       MS      Number of obs   =    38,339
+-------------+----------------------------------   F(10, 38328)    =    807.91
+       Model |  1290.48916        10  129.048916   Prob > F        =    0.0000
+    Residual |  6122.19714    38,328  .159731714   R-squared       =    0.1741
+-------------+----------------------------------   Adj R-squared   =    0.1739
+       Total |   7412.6863    38,338  .193350887   Root MSE        =    .39966
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1258699   .0019564    64.34   0.000     .1220354    .1297044
+        edad |  -.0084848   .0009109    -9.31   0.000    -.0102702   -.0066995
+     sq_edad |   .0000574   9.82e-06     5.85   0.000     .0000382    .0000767
+        sexo |   .0952137   .0042656    22.32   0.000     .0868531    .1035744
+      region |   .0004343   .0005019     0.87   0.387    -.0005495    .0014181
+est_conyugal |  -.0022523   .0013366    -1.69   0.092     -.004872    .0003674
+       orig1 |   .0001985   .0006404     0.31   0.757    -.0010567    .0014538
+        tipo |   .0063267    .002706     2.34   0.019     .0010228    .0116305
+  habituales |  -.0003414   .0000454    -7.51   0.000    -.0004304   -.0002523
+      sector |   -.064988   .0044065   -14.75   0.000    -.0736247   -.0563512
+       _cons |  -1.833928   .0424636   -43.19   0.000    -1.917157   -1.750698
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+      Source |       SS           df       MS      Number of obs   =    16,317
+-------------+----------------------------------   F(11, 16305)    =    311.45
+       Model |  547.896257        11  49.8087507   Prob > F        =    0.0000
+    Residual |  2607.54384    16,305  .159922958   R-squared       =    0.1736
+-------------+----------------------------------   Adj R-squared   =    0.1731
+       Total |  3155.44009    16,316  .193395446   Root MSE        =     .3999
+
+------------------------------------------------------------------------------
+      ed_uni | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    log_ingr |   .1269577   .0030077    42.21   0.000     .1210623     .132853
+        edad |  -.0080777   .0014017    -5.76   0.000    -.0108253   -.0053302
+     sq_edad |   .0000524   .0000151     3.46   0.001     .0000227    .0000821
+        sexo |   .0961286   .0065577    14.66   0.000     .0832749    .1089823
+      region |   .0003396   .0007649     0.44   0.657    -.0011597    .0018388
+est_conyugal |    -.00134    .002498    -0.54   0.592    -.0062364    .0035564
+       orig1 |   .0004496   .0009853     0.46   0.648    -.0014818     .002381
+        tipo |    .003523   .0041604     0.85   0.397    -.0046318    .0116778
+  habituales |  -.0003619   .0000712    -5.09   0.000    -.0005014   -.0002225
+      sector |  -.0544574   .0068087    -8.00   0.000    -.0678032   -.0411116
+      asocia |  -.0070437   .0087011    -0.81   0.418    -.0240989    .0100115
+       _cons |  -1.860006   .0674775   -27.56   0.000    -1.992269   -1.727743
+------------------------------------------------------------------------------
+REG_p1_18.doc
+dir : seeout
+
+. 
+. **  ------------------------
+. 
+. 
+. 
+. 
+. ************************************
+. ************************************
+. ***                                                              ***
+. *** ----    PREGUNTA 2.     ---- ***
+. ***                                                              ***
+. ************************************
+. ************************************
+. 
+. clear all
+
+. macro drop _all
+
+. 
+. **  ---- Pregunta 2.2 -----
+. cd "/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP"
+/Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP
+
+. import delimited "A_INSCRITOS_PUNTAJES_PDT_2022_PUB_MRUN.csv"
+(encoding automatically selected: UTF-8)
+(71 vars, 285,513 obs)
+
+. **  -----------------------
+. 
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/mmunozcampos/Downloads/Tarea 1 Econometria/Tarea1.log
+       log:  /Users/mmunozcampos/Documents/Micro Aplicada/T1 MAP/MicroApp-T1/Tarea1.log
   log type:  text
- closed on:  22 Mar 2025, 16:58:25
---------------------------------------------------------------------------------------------------------------------------------
+ closed on:   6 Apr 2025, 15:44:51
+-----------------------------------------------------------------------------------------------
